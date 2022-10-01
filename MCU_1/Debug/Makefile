@@ -34,6 +34,7 @@ LINKER_SCRIPT_DEP:=
 # Every subdirectory with source files must be described here
 SUBDIRS :=  \
 ../MCAL \
+../MCAL/DIO \
 ../MCAL/UART \
 ../APP \
 ../Utils/
@@ -43,6 +44,7 @@ SUBDIRS :=  \
 C_SRCS +=  \
 ../APP/APP.c \
 ../main.c \
+../MCAL/DIO/DIO.c \
 ../MCAL/UART/UART.c
 
 
@@ -55,21 +57,25 @@ ASM_SRCS +=
 OBJS +=  \
 APP/APP.o \
 main.o \
+MCAL/DIO/DIO.o \
 MCAL/UART/UART.o
 
 OBJS_AS_ARGS +=  \
 APP/APP.o \
 main.o \
+MCAL/DIO/DIO.o \
 MCAL/UART/UART.o
 
 C_DEPS +=  \
 APP/APP.d \
 main.d \
+MCAL/DIO/DIO.d \
 MCAL/UART/UART.d
 
 C_DEPS_AS_ARGS +=  \
 APP/APP.d \
 main.d \
+MCAL/DIO/DIO.d \
 MCAL/UART/UART.d
 
 OUTPUT_FILE_PATH +=MCU_1.elf
@@ -94,6 +100,13 @@ APP/APP.o: ../APP/APP.c
 	
 
 ./main.o: .././main.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32a -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+MCAL/DIO/DIO.o: ../MCAL/DIO/DIO.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32a -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

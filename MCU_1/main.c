@@ -5,14 +5,20 @@
  * Author : mosta
  */ 
 
-#include <avr/io.h>
+#include "MCAL/UART/UART.h"
+
+uint16_t data;
 
 
 int main(void)
 {
-    /* Replace with your application code */
+    UART_init();
     while (1) 
     {
+		_delay_ms(1000);
+		UART_transmit(1);
+		_delay_ms(1000);
+		UART_transmit(0);
     }
 }
 

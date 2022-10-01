@@ -6,5 +6,7 @@ APP\APP.c
 
 main.c
 
+MCAL\DIO\DIO.c
+
 MCAL\UART\UART.c
 
