@@ -5,8 +5,8 @@
  * Author : mosta
  */ 
 
-#include "MCAL/UART/UART.h"
-#include "MCAL/DIO/DIO.h"
+#include "MCAL_2/UART_2/UART_2.h"
+#include "MCAL_2/DIO_2/DIO_2.h"
 uint16_t data =0;
 
 

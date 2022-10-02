@@ -29,16 +29,16 @@
     <eraseonlaunchrule>0</eraseonlaunchrule>
     <EraseKey />
     <AsfFrameworkConfig>
-      <framework-data xmlns="">
-        <options />
-        <configurations />
-        <files />
-        <documentation help="" />
-        <offline-documentation help="" />
-        <dependencies>
-          <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.52.0" />
-        </dependencies>
-      </framework-data>
+      <framework-data>
+  <options />
+  <configurations />
+  <files />
+  <documentation help="" />
+  <offline-documentation help="" />
+  <dependencies>
+    <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.42.0" />
+  </dependencies>
+</framework-data>
     </AsfFrameworkConfig>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
@@ -120,37 +120,37 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="APP\APP.c">
+    <Compile Include="APP_2\APP_2.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="APP\APP.h">
+    <Compile Include="APP_2\APP_2.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="main.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="MCAL\DIO\DIO.c">
+    <Compile Include="MCAL_2\DIO_2\DIO_2.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="MCAL\DIO\DIO.h">
+    <Compile Include="MCAL_2\DIO_2\DIO_2.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="MCAL\UART\UART.c">
+    <Compile Include="MCAL_2\UART_2\UART_2.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="MCAL\UART\UART.h">
+    <Compile Include="MCAL_2\UART_2\UART_2.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Utils\Macros.h">
+    <Compile Include="Utils_2\Macros_2.h">
       <SubType>compile</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="APP\" />
-    <Folder Include="MCAL\" />
-    <Folder Include="MCAL\DIO\" />
-    <Folder Include="MCAL\UART\" />
-    <Folder Include="Utils" />
+    <Folder Include="APP_2" />
+    <Folder Include="MCAL_2" />
+    <Folder Include="MCAL_2\DIO_2" />
+    <Folder Include="MCAL_2\UART_2" />
+    <Folder Include="Utils_2" />
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
 </Project>

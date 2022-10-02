@@ -19,15 +19,15 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
   7 .debug_abbrev 0000068e  00000000  00000000  00000d04  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   0000052d  00000000  00000000  00001392  2**0
+  8 .debug_line   00000545  00000000  00000000  00001392  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  000000cc  00000000  00000000  000018c0  2**2
+  9 .debug_frame  000000cc  00000000  00000000  000018d8  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    0000037f  00000000  00000000  0000198c  2**0
+ 10 .debug_str    0000038b  00000000  00000000  000019a4  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00000278  00000000  00000000  00001d0b  2**0
+ 11 .debug_loc    00000278  00000000  00000000  00001d2f  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000060  00000000  00000000  00001f83  2**0
+ 12 .debug_ranges 00000060  00000000  00000000  00001fa7  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -122,7 +122,7 @@ int main(void)
   b4:	ea cf       	rjmp	.-44     	; 0x8a <main+0xe>
 
 000000b6 <DIO_init>:
-#include "DIO.h"
+#include "DIO_2.h"
 
 // Set pin direction in a specific port (input or output)
 void DIO_init(uint8_t portname, uint8_t pinnum, uint8_t direction){

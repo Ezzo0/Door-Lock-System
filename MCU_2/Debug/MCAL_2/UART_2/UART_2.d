@@ -1,5 +1,5 @@
-main.d main.o: .././main.c .././MCAL_2/UART_2/UART_2.h \
- .././MCAL_2/UART_2/../../Utils_2/Macros_2.h \
+MCAL_2/UART_2/UART_2.d MCAL_2/UART_2/UART_2.o: ../MCAL_2/UART_2/UART_2.c \
+ ../MCAL_2/UART_2/UART_2.h ../MCAL_2/UART_2/../../Utils_2/Macros_2.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\sfr_defs.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\inttypes.h \
@@ -13,12 +13,11 @@ main.d main.o: .././main.c .././MCAL_2/UART_2/UART_2.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h \
- c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
- .././MCAL_2/DIO_2/DIO_2.h .././MCAL_2/DIO_2/../../Utils_2/Macros_2.h
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h
 
-.././MCAL_2/UART_2/UART_2.h:
+../MCAL_2/UART_2/UART_2.h:
 
-.././MCAL_2/UART_2/../../Utils_2/Macros_2.h:
+../MCAL_2/UART_2/../../Utils_2/Macros_2.h:
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h:
 
@@ -47,7 +46,3 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h:
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h:
-
-.././MCAL_2/DIO_2/DIO_2.h:
-
-.././MCAL_2/DIO_2/../../Utils_2/Macros_2.h:

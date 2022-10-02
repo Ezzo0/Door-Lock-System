@@ -1,0 +1,1 @@
+APP_2/APP_2.d APP_2/APP_2.o: ../APP_2/APP_2.c

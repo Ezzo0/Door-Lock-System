@@ -5,7 +5,7 @@
  *  Author: mosta
  */ 
 
-#include "UART.h"
+#include "UART_2.h"
 extern uint16_t data;
 
 void UART_init(){

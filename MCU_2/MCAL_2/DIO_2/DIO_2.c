@@ -5,7 +5,7 @@
  *  Author: Mostafa Ayyad
  */ 
 
-#include "DIO.h"
+#include "DIO_2.h"
 
 // Set pin direction in a specific port (input or output)
 void DIO_init(uint8_t portname, uint8_t pinnum, uint8_t direction){

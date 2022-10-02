@@ -33,19 +33,19 @@ LINKER_SCRIPT_DEP:=
 
 # Every subdirectory with source files must be described here
 SUBDIRS :=  \
-../APP/ \
-../MCAL/ \
-../MCAL/DIO/ \
-../MCAL/UART/ \
-../Utils
+../APP_2 \
+../MCAL_2 \
+../MCAL_2/DIO_2 \
+../MCAL_2/UART_2 \
+../Utils_2
 
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
-../APP/APP.c \
+../APP_2/APP_2.c \
 ../main.c \
-../MCAL/DIO/DIO.c \
-../MCAL/UART/UART.c
+../MCAL_2/DIO_2/DIO_2.c \
+../MCAL_2/UART_2/UART_2.c
 
 
 PREPROCESSING_SRCS += 
@@ -55,28 +55,28 @@ ASM_SRCS +=
 
 
 OBJS +=  \
-APP/APP.o \
+APP_2/APP_2.o \
 main.o \
-MCAL/DIO/DIO.o \
-MCAL/UART/UART.o
+MCAL_2/DIO_2/DIO_2.o \
+MCAL_2/UART_2/UART_2.o
 
 OBJS_AS_ARGS +=  \
-APP/APP.o \
+APP_2/APP_2.o \
 main.o \
-MCAL/DIO/DIO.o \
-MCAL/UART/UART.o
+MCAL_2/DIO_2/DIO_2.o \
+MCAL_2/UART_2/UART_2.o
 
 C_DEPS +=  \
-APP/APP.d \
+APP_2/APP_2.d \
 main.d \
-MCAL/DIO/DIO.d \
-MCAL/UART/UART.d
+MCAL_2/DIO_2/DIO_2.d \
+MCAL_2/UART_2/UART_2.d
 
 C_DEPS_AS_ARGS +=  \
-APP/APP.d \
+APP_2/APP_2.d \
 main.d \
-MCAL/DIO/DIO.d \
-MCAL/UART/UART.d
+MCAL_2/DIO_2/DIO_2.d \
+MCAL_2/UART_2/UART_2.d
 
 OUTPUT_FILE_PATH +=MCU_2.elf
 
@@ -92,7 +92,7 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
-APP/APP.o: ../APP/APP.c
+APP_2/APP_2.o: ../APP_2/APP_2.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32a -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
@@ -106,14 +106,14 @@ APP/APP.o: ../APP/APP.c
 	@echo Finished building: $<
 	
 
-MCAL/DIO/DIO.o: ../MCAL/DIO/DIO.c
+MCAL_2/DIO_2/DIO_2.o: ../MCAL_2/DIO_2/DIO_2.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32a -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
-MCAL/UART/UART.o: ../MCAL/UART/UART.c
+MCAL_2/UART_2/UART_2.o: ../MCAL_2/UART_2/UART_2.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32a -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

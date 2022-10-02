@@ -2,11 +2,11 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
-APP\APP.c
+APP_2\APP_2.c
 
 main.c
 
-MCAL\DIO\DIO.c
+MCAL_2\DIO_2\DIO_2.c
 
-MCAL\UART\UART.c
+MCAL_2\UART_2\UART_2.c
 
