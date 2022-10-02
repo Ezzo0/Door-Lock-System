@@ -126,6 +126,18 @@
     <Compile Include="APP\APP.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="HAL\KEYPAD\KEYPAD.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\KEYPAD\KEYPAD.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\LCD\LCD.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\LCD\LCD.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="main.c">
       <SubType>compile</SubType>
     </Compile>
@@ -146,10 +158,13 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="HAL\LCD" />
+    <Folder Include="HAL\KEYPAD" />
     <Folder Include="MCAL" />
     <Folder Include="MCAL\DIO" />
     <Folder Include="MCAL\UART" />
     <Folder Include="APP" />
+    <Folder Include="HAL" />
     <Folder Include="Utils\" />
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
