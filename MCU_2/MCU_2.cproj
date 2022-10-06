@@ -36,7 +36,7 @@
   <documentation help="" />
   <offline-documentation help="" />
   <dependencies>
-    <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.42.0" />
+    <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.44.1" />
   </dependencies>
 </framework-data>
     </AsfFrameworkConfig>
@@ -126,31 +126,38 @@
     <Compile Include="APP_2\APP_2.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="main.c">
+    <Compile Include="main_MCU_2.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="MCAL_2\DIO_2\DIO_2.c">
+    <Compile Include="MCAL_2\DIO_Driver_2\DIO_2.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="MCAL_2\DIO_2\DIO_2.h">
+    <Compile Include="MCAL_2\DIO_Driver_2\DIO_2.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="MCAL_2\UART_2\UART_2.c">
+    <Compile Include="MCAL_2\TWI_Driver_2\TWI_2.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="MCAL_2\UART_2\UART_2.h">
+    <Compile Include="MCAL_2\TWI_Driver_2\TWI_2.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Utils_2\Macros_2.h">
+    <Compile Include="MCAL_2\UART_Driver_2\UART_2.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL_2\UART_Driver_2\UART_2.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Utilities_2\Macros_2.h">
       <SubType>compile</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="APP_2" />
     <Folder Include="MCAL_2" />
-    <Folder Include="MCAL_2\DIO_2" />
-    <Folder Include="MCAL_2\UART_2" />
-    <Folder Include="Utils_2" />
+    <Folder Include="MCAL_2\DIO_Driver_2" />
+    <Folder Include="MCAL_2\TWI_Driver_2" />
+    <Folder Include="MCAL_2\UART_Driver_2" />
+    <Folder Include="Utilities_2" />
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
 </Project>

@@ -20,10 +20,10 @@
     <OverrideVtor>false</OverrideVtor>
     <CacheFlash>true</CacheFlash>
     <ProgFlashFromRam>true</ProgFlashFromRam>
-    <RamSnippetAddress />
+    <RamSnippetAddress>0x20000000</RamSnippetAddress>
     <UncachedRange />
     <preserveEEPROM>true</preserveEEPROM>
-    <OverrideVtorValue />
+    <OverrideVtorValue>exception_table</OverrideVtorValue>
     <BootSegment>2</BootSegment>
     <ResetRule>0</ResetRule>
     <eraseonlaunchrule>0</eraseonlaunchrule>
@@ -36,10 +36,23 @@
   <documentation help="" />
   <offline-documentation help="" />
   <dependencies>
-    <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.42.0" />
+    <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.44.1" />
   </dependencies>
 </framework-data>
     </AsfFrameworkConfig>
+    <avrtool>com.atmel.avrdbg.tool.simulator</avrtool>
+    <avrtoolserialnumber />
+    <avrdeviceexpectedsignature>0x1E9502</avrdeviceexpectedsignature>
+    <com_atmel_avrdbg_tool_simulator>
+      <ToolOptions xmlns="">
+        <InterfaceProperties>
+        </InterfaceProperties>
+      </ToolOptions>
+      <ToolType xmlns="">com.atmel.avrdbg.tool.simulator</ToolType>
+      <ToolNumber xmlns="">
+      </ToolNumber>
+      <ToolName xmlns="">Simulator</ToolName>
+    </com_atmel_avrdbg_tool_simulator>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <ToolchainSettings>
@@ -126,46 +139,46 @@
     <Compile Include="APP\APP.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="HAL\KEYPAD\KEYPAD.c">
+    <Compile Include="ECUAL_1\Keypad_Driver\keypad.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="HAL\KEYPAD\KEYPAD.h">
+    <Compile Include="ECUAL_1\Keypad_Driver\keypad.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="HAL\LCD\LCD.c">
+    <Compile Include="ECUAL_1\LCD_Driver\lcd.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="HAL\LCD\LCD.h">
+    <Compile Include="ECUAL_1\LCD_Driver\lcd.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="main.c">
+    <Compile Include="main_MCU_1.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="MCAL\DIO\DIO.c">
+    <Compile Include="MCAL_1\DIO_Driver_1\DIO_1.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="MCAL\DIO\DIO.h">
+    <Compile Include="MCAL_1\DIO_Driver_1\DIO_1.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="MCAL\UART\UART.c">
+    <Compile Include="MCAL_1\UART_Driver_1\UART_1.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="MCAL\UART\UART.h">
+    <Compile Include="MCAL_1\UART_Driver_1\UART_1.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Utils\Macros.h">
+    <Compile Include="Utilities_1\Macros_1.h">
       <SubType>compile</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="HAL\LCD" />
-    <Folder Include="HAL\KEYPAD" />
-    <Folder Include="MCAL" />
-    <Folder Include="MCAL\DIO" />
-    <Folder Include="MCAL\UART" />
+    <Folder Include="ECUAL_1\Keypad_Driver" />
+    <Folder Include="ECUAL_1\LCD_Driver" />
+    <Folder Include="MCAL_1" />
+    <Folder Include="MCAL_1\DIO_Driver_1" />
+    <Folder Include="MCAL_1\UART_Driver_1" />
     <Folder Include="APP" />
-    <Folder Include="HAL" />
-    <Folder Include="Utils\" />
+    <Folder Include="ECUAL_1" />
+    <Folder Include="Utilities_1" />
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
 </Project>
