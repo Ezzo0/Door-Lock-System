@@ -51,25 +51,12 @@ EN_returnStatus_t TWI_start()
 	status = (TWSR & 0xF8); // Reading TWI status register
 	if(status != START_STATE)
 		return START_NOT_SENT;
-	else
-		return EVENT_OK;
-}
-
-EN_returnStatus_t repeated_TWI_start()
-{
-	uint8_t status;
-	set_pin(TWCR,TWINT); // Clear interrupt flag in control register
-	set_pin(TWCR,TWSTA); // Set start bit in control register
-	set_pin(TWCR,TWEN); // Enable TWI
-	while (!( TWCR & (1 << TWINT) )); // Wait for TWINT Flag set
-	
-	// Check state on TWI Status register
-	status = (TWSR & 0xF8); // Reading TWI status register
-	if(status != REPEATED_START_STATE)
+	else if(status != REPEATED_START_STATE)
 		return REPEATED_START_NOT_SENT;
 	else
 		return EVENT_OK;
 }
+
 
 EN_returnStatus_t TWI_send_address(uint8_t address, uint8_t r_or_w)
 {
@@ -158,3 +145,5 @@ void TWI_stop()
 	set_pin(TWCR,TWEN);
 	while (!( TWCR & (1 << TWINT) )); // Wait until stop condition execution 
 }
+
+

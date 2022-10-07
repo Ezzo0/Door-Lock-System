@@ -13,6 +13,17 @@
 
 #define NOT_pressed 0
 
+// Column macros
+#define column_4 PIN_0
+#define column_3 PIN_1
+#define column_2 PIN_2
+#define column_1 PIN_3
+// row macros
+#define row_A PIN_7
+#define row_B PIN_6
+#define row_C PIN_5
+#define row_D PIN_4
+
 void Keypad_init();
 uint8_t Keypad_pressed();
 

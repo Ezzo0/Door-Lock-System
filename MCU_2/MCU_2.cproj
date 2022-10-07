@@ -30,15 +30,15 @@
     <EraseKey />
     <AsfFrameworkConfig>
       <framework-data>
-  <options />
-  <configurations />
-  <files />
-  <documentation help="" />
-  <offline-documentation help="" />
-  <dependencies>
-    <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.44.1" />
-  </dependencies>
-</framework-data>
+        <options />
+        <configurations />
+        <files />
+        <documentation help="" />
+        <offline-documentation help="" />
+        <dependencies>
+          <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.44.1" />
+        </dependencies>
+      </framework-data>
     </AsfFrameworkConfig>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
@@ -126,6 +126,12 @@
     <Compile Include="APP_2\APP_2.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="ECUAL_2\EEPROM\EEPROM.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="ECUAL_2\EEPROM\EEPROM.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="main_MCU_2.c">
       <SubType>compile</SubType>
     </Compile>
@@ -153,10 +159,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="APP_2" />
+    <Folder Include="ECUAL_2\EEPROM" />
     <Folder Include="MCAL_2" />
     <Folder Include="MCAL_2\DIO_Driver_2" />
     <Folder Include="MCAL_2\TWI_Driver_2" />
     <Folder Include="MCAL_2\UART_Driver_2" />
+    <Folder Include="ECUAL_2" />
     <Folder Include="Utilities_2" />
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
