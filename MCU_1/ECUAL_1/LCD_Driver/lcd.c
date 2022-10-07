@@ -70,6 +70,6 @@ void LCD_8_bit_clear_all()
 
 void LCD_8_bit_sendString(uint8_t *string_data)
 {
-	for (uint8_t cnt = 0; string_data[cnt] != '\0'; ++cnt) // Loop for sending each char in the string to the LCD
-		LCD_8_bit_sendChar(string_data[cnt]); // call the writing function on LCD
+	for (uint8_t cnt = 0; *(string_data+cnt) != '\0'; ++cnt) // Loop for sending each char in the string to the LCD
+		LCD_8_bit_sendChar(*(string_data+cnt)); // call the writing function on LCD
 }

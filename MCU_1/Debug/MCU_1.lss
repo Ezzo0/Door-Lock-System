@@ -19,15 +19,15 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
   7 .debug_abbrev 000008ae  00000000  00000000  000017b7  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00000942  00000000  00000000  00002065  2**0
+  8 .debug_line   00000984  00000000  00000000  00002065  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  00000170  00000000  00000000  000029a8  2**2
+  9 .debug_frame  00000170  00000000  00000000  000029ec  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    000004b8  00000000  00000000  00002b18  2**0
+ 10 .debug_str    000004bb  00000000  00000000  00002b5c  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00000645  00000000  00000000  00002fd0  2**0
+ 11 .debug_loc    00000645  00000000  00000000  00003017  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 000000a8  00000000  00000000  00003615  2**0
+ 12 .debug_ranges 000000a8  00000000  00000000  0000365c  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -405,17 +405,17 @@ void LCD_8_bit_sendString(uint8_t *string_data)
  22a:	1f 93       	push	r17
  22c:	cf 93       	push	r28
  22e:	8c 01       	movw	r16, r24
-	for (uint8_t cnt = 0; string_data[cnt] != '\0'; ++cnt) // Loop for sending each char in the string to the LCD
+	for (uint8_t cnt = 0; *(string_data+cnt) != '\0'; ++cnt) // Loop for sending each char in the string to the LCD
  230:	c0 e0       	ldi	r28, 0x00	; 0
  232:	03 c0       	rjmp	.+6      	; 0x23a <LCD_8_bit_sendString+0x12>
-		LCD_8_bit_sendChar(string_data[cnt]); // call the writing function on LCD
+		LCD_8_bit_sendChar(*(string_data+cnt)); // call the writing function on LCD
  234:	0e 94 fa 00 	call	0x1f4	; 0x1f4 <LCD_8_bit_sendChar>
 
 }
 
 void LCD_8_bit_sendString(uint8_t *string_data)
 {
-	for (uint8_t cnt = 0; string_data[cnt] != '\0'; ++cnt) // Loop for sending each char in the string to the LCD
+	for (uint8_t cnt = 0; *(string_data+cnt) != '\0'; ++cnt) // Loop for sending each char in the string to the LCD
  238:	cf 5f       	subi	r28, 0xFF	; 255
  23a:	f8 01       	movw	r30, r16
  23c:	ec 0f       	add	r30, r28
@@ -423,7 +423,7 @@ void LCD_8_bit_sendString(uint8_t *string_data)
  240:	80 81       	ld	r24, Z
  242:	81 11       	cpse	r24, r1
  244:	f7 cf       	rjmp	.-18     	; 0x234 <LCD_8_bit_sendString+0xc>
-		LCD_8_bit_sendChar(string_data[cnt]); // call the writing function on LCD
+		LCD_8_bit_sendChar(*(string_data+cnt)); // call the writing function on LCD
  246:	cf 91       	pop	r28
  248:	1f 91       	pop	r17
  24a:	0f 91       	pop	r16

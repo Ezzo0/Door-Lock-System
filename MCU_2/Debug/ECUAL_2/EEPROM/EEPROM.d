@@ -1,6 +1,7 @@
-MCAL_2/TWI_Driver_2/TWI_2.d MCAL_2/TWI_Driver_2/TWI_2.o: \
- ../MCAL_2/TWI_Driver_2/TWI_2.c ../MCAL_2/TWI_Driver_2/TWI_2.h \
- ../MCAL_2/TWI_Driver_2/../../Utilities_2/Macros_2.h \
+ECUAL_2/EEPROM/EEPROM.d ECUAL_2/EEPROM/EEPROM.o: \
+ ../ECUAL_2/EEPROM/EEPROM.c ../ECUAL_2/EEPROM/EEPROM.h \
+ ../ECUAL_2/EEPROM/../../MCAL_2/TWI_Driver_2/TWI_2.h \
+ ../ECUAL_2/EEPROM/../../MCAL_2/TWI_Driver_2/../../Utilities_2/Macros_2.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\sfr_defs.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\inttypes.h \
@@ -14,11 +15,14 @@ MCAL_2/TWI_Driver_2/TWI_2.d MCAL_2/TWI_Driver_2/TWI_2.o: \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h \
- c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
+ ../ECUAL_2/EEPROM/../../Utilities_2/Macros_2.h
 
-../MCAL_2/TWI_Driver_2/TWI_2.h:
+../ECUAL_2/EEPROM/EEPROM.h:
 
-../MCAL_2/TWI_Driver_2/../../Utilities_2/Macros_2.h:
+../ECUAL_2/EEPROM/../../MCAL_2/TWI_Driver_2/TWI_2.h:
+
+../ECUAL_2/EEPROM/../../MCAL_2/TWI_Driver_2/../../Utilities_2/Macros_2.h:
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h:
 
@@ -47,3 +51,5 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h:
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h:
+
+../ECUAL_2/EEPROM/../../Utilities_2/Macros_2.h:

@@ -12,7 +12,8 @@
 #include "../../MCAL_2/TWI_Driver_2/TWI_2.h"
 #include "../../Utilities_2/Macros_2.h"
 
-void EEPROM_Read (char address, char* ptr);
+void EEPROM_Read (uint8_t address, uint8_t* ptr);
+void EEPROM_Write (char data, char address);
 
 
 
