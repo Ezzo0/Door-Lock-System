@@ -43,10 +43,9 @@ typedef enum EN_returnStatus_t
 
 void TWI_init(uint8_t prescalar);
 EN_returnStatus_t TWI_start();
+EN_returnStatus_t repeated_TWI_start();
 EN_returnStatus_t TWI_send_address(uint8_t address, uint8_t r_or_w);
 EN_returnStatus_t TWI_data_event(uint8_t *data, uint8_t r_or_w, uint8_t ack);
 void TWI_stop();
-void TWI_MT();
-void TWI_MR();
 
 #endif /* TWI_H_ */

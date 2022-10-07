@@ -1,6 +1,7 @@
-main_MCU_2.d main_MCU_2.o: .././main_MCU_2.c \
- .././MCAL_2/UART_Driver_2/UART_2.h \
- .././MCAL_2/UART_Driver_2/../../Utilities_2/Macros_2.h \
+ECUAL_2/EEPROM/EEPROM.d ECUAL_2/EEPROM/EEPROM.o: \
+ ../ECUAL_2/EEPROM/EEPROM.c ../ECUAL_2/EEPROM/EEPROM.h \
+ ../ECUAL_2/EEPROM/../../MCAL_2/TWI_Driver_2/TWI_2.h \
+ ../ECUAL_2/EEPROM/../../MCAL_2/TWI_Driver_2/../../Utilities_2/Macros_2.h \
  d:\ides\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h \
  d:\ides\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\sfr_defs.h \
  d:\ides\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\inttypes.h \
@@ -14,17 +15,13 @@ main_MCU_2.d main_MCU_2.o: .././main_MCU_2.c \
  d:\ides\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h \
  d:\ides\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h \
  d:\ides\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h \
- d:\ides\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
- .././MCAL_2/DIO_Driver_2/DIO_2.h \
- .././MCAL_2/DIO_Driver_2/../../Utilities_2/Macros_2.h \
- .././MCAL_2/TWI_Driver_2/TWI_2.h \
- .././MCAL_2/TWI_Driver_2/../../Utilities_2/Macros_2.h \
- .././ECUAL_2/EEPROM/EEPROM.h \
- .././ECUAL_2/EEPROM/../../MCAL_2/TWI_Driver_2/TWI_2.h
+ d:\ides\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h
 
-.././MCAL_2/UART_Driver_2/UART_2.h:
+../ECUAL_2/EEPROM/EEPROM.h:
 
-.././MCAL_2/UART_Driver_2/../../Utilities_2/Macros_2.h:
+../ECUAL_2/EEPROM/../../MCAL_2/TWI_Driver_2/TWI_2.h:
+
+../ECUAL_2/EEPROM/../../MCAL_2/TWI_Driver_2/../../Utilities_2/Macros_2.h:
 
 d:\ides\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h:
 
@@ -53,15 +50,3 @@ d:\ides\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util
 d:\ides\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h:
 
 d:\ides\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h:
-
-.././MCAL_2/DIO_Driver_2/DIO_2.h:
-
-.././MCAL_2/DIO_Driver_2/../../Utilities_2/Macros_2.h:
-
-.././MCAL_2/TWI_Driver_2/TWI_2.h:
-
-.././MCAL_2/TWI_Driver_2/../../Utilities_2/Macros_2.h:
-
-.././ECUAL_2/EEPROM/EEPROM.h:
-
-.././ECUAL_2/EEPROM/../../MCAL_2/TWI_Driver_2/TWI_2.h:

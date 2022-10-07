@@ -8,34 +8,19 @@
 #include "MCAL_2/UART_Driver_2/UART_2.h"
 #include "MCAL_2/DIO_Driver_2/DIO_2.h"
 #include "MCAL_2/TWI_Driver_2/TWI_2.h"
+#include "ECUAL_2/EEPROM/EEPROM.h"
 
-uint8_t data;
+uint8_t data = 0xFF;
+uint8_t data_read;
 int main(void)
 {
 	DDRB = 0xFF;
-    TWI_init(1);
-    if(TWI_start() == EVENT_OK)
-    {
-	    if(TWI_send_address(0x10,Read) == SLA_R_ACK_SENT)
-	    {
-		    if(TWI_data_event(&data,Read,NOT_ACK) == DATA_R_NACK_SENT)
-		    {
-			    TWI_stop();
-		    }
-	    }
-    }
-    PORTB = data;
-		
-	if(TWI_start() == EVENT_OK)
-	{
-		if(TWI_send_address(0x10,Write) == SLA_W_ACK_SENT)
-		{
-			if(TWI_data_event(&data,Write,ACK) == DATA_W_ACK_SENT)
-			{
-				TWI_stop();
-			}
-		}
-	}
+    EEPROM_inti(1);
+	EEPROM_write(&data);
+	_delay_ms(1000);
+    EEPROM_read(&data_read);
+	PORTB = data_read;
+	
     while (1) 
     {
 		
