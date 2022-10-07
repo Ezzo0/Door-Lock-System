@@ -51,12 +51,25 @@ EN_returnStatus_t TWI_start()
 	status = (TWSR & 0xF8); // Reading TWI status register
 	if(status != START_STATE)
 		return START_NOT_SENT;
-	else if(status != REPEATED_START_STATE)
-		return REPEATED_START_NOT_SENT;
 	else
 		return EVENT_OK;
 }
 
+EN_returnStatus_t repeated_TWI_start()
+{
+	uint8_t status;
+	set_pin(TWCR,TWINT); // Clear interrupt flag in control register
+	set_pin(TWCR,TWSTA); // Set start bit in control register
+	set_pin(TWCR,TWEN); // Enable TWI
+	while (!( TWCR & (1 << TWINT) )); // Wait for TWINT Flag set
+	
+	// Check state on TWI Status register
+	status = (TWSR & 0xF8); // Reading TWI status register
+	if(status != REPEATED_START_STATE)
+		return REPEATED_START_NOT_SENT;
+	else
+		return EVENT_OK;
+}
 
 EN_returnStatus_t TWI_send_address(uint8_t address, uint8_t r_or_w)
 {
@@ -99,10 +112,13 @@ EN_returnStatus_t TWI_data_event(uint8_t *data, uint8_t r_or_w, uint8_t ack)
 		
 		// Check state on TWI Status register
 		status = (TWSR & 0xF8); // Reading TWI status register
+		
 		if( status == DATA_W_ACK_STATE )
 			return DATA_W_ACK_SENT;		// Data written & Ack received 
+		
 		else if( status == DATA_W_NACK_STATE )
 			return DATA_W_NACK_SENT;	// Data written & No Ack received 
+		
 		else
 			return DATA_W_FAILED;		// Data transmission failed
 		
@@ -130,7 +146,7 @@ EN_returnStatus_t TWI_data_event(uint8_t *data, uint8_t r_or_w, uint8_t ack)
 		status = (TWSR & 0xF8); // Reading TWI status register
 		if( status == DATA_R_ACK_STATE )
 			return DATA_R_ACK_SENT; // Data transmitted with ACK
-		else if( status == DATA_W_NACK_STATE )
+		else if( status == DATA_R_NACK_STATE )
 			return DATA_R_NACK_SENT; // Data transmitted with NO ACK
 		else
 			return DATA_R_FAILED; // Data transmission failed 
@@ -139,11 +155,6 @@ EN_returnStatus_t TWI_data_event(uint8_t *data, uint8_t r_or_w, uint8_t ack)
 
 void TWI_stop()
 {
-	// Enable TWI, stop condition
-	set_pin(TWCR,TWINT);
-	set_pin(TWCR,TWSTO);
-	set_pin(TWCR,TWEN);
-	while (!( TWCR & (1 << TWINT) )); // Wait until stop condition execution 
+	TWCR = (1 << TWSTO) | (1 << TWINT) | (1 << TWEN);// Enable TWI, generate stop
+	while( TWCR & (1 << TWSTO) );	// Wait until stop condition execution 
 }
-
-

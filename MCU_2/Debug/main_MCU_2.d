@@ -16,7 +16,9 @@ main_MCU_2.d main_MCU_2.o: .././main_MCU_2.c \
  d:\ides\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h \
  d:\ides\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
  .././MCAL_2/DIO_Driver_2/DIO_2.h \
- .././MCAL_2/DIO_Driver_2/../../Utilities_2/Macros_2.h
+ .././MCAL_2/DIO_Driver_2/../../Utilities_2/Macros_2.h \
+ .././MCAL_2/TWI_Driver_2/TWI_2.h \
+ .././MCAL_2/TWI_Driver_2/../../Utilities_2/Macros_2.h
 
 .././MCAL_2/UART_Driver_2/UART_2.h:
 
@@ -53,3 +55,7 @@ d:\ides\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math
 .././MCAL_2/DIO_Driver_2/DIO_2.h:
 
 .././MCAL_2/DIO_Driver_2/../../Utilities_2/Macros_2.h:
+
+.././MCAL_2/TWI_Driver_2/TWI_2.h:
+
+.././MCAL_2/TWI_Driver_2/../../Utilities_2/Macros_2.h:
