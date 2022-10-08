@@ -151,6 +151,9 @@ EN_returnStatus_t TWI_data_event(uint8_t *data, uint8_t r_or_w, uint8_t ack)
 		else
 			return DATA_R_FAILED; // Data transmission failed 
 	}
+	else{
+		return 100;
+	}
 }
 
 void TWI_stop()
