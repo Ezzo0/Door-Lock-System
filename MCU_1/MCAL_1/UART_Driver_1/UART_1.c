@@ -81,6 +81,7 @@ void UART_set_frame(uint8_t bitnum, uint8_t stopbits)
 		}
 	}
 }
+
 void UART_transmit(uint8_t data)
 {
 	// Wait for empty transmit buffer
@@ -89,6 +90,14 @@ void UART_transmit(uint8_t data)
 	// Put data into buffer, sends the data
 	UDR = data;
 }
+
+void UART_transmitString(uint8_t *string_data)
+{
+	for(uint8_t cnt=0; *(string_data + cnt) != '\0'; cnt++)
+		UART_transmit(*(string_data + cnt));
+	UART_transmit('\0');
+}
+
 uint8_t UART_receive()
 {
 	// Wait for data to be received 

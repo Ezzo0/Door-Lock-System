@@ -92,7 +92,6 @@ void UART_transmit(uint8_t data)
 	UDR = data;
 }
 
-
 uint8_t UART_receive()
 {
 	/* Wait for data to be received */
@@ -100,4 +99,14 @@ uint8_t UART_receive()
 	
 	/* Get and return received data from buffer */
 	return UDR;
+}
+
+void UART_receiveString(uint8_t *string)
+{
+	for(uint8_t cnt=0; ; cnt++)
+	{
+		*(string + cnt) = UART_receive();
+		if(*(string + cnt) == '\0')
+			break;
+	}
 }

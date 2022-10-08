@@ -21,6 +21,7 @@ void UART_set_BAUD(uint16_t baud);
 void UART_set_frame(uint8_t bitnum, uint8_t stopbits);
 void UART_transmit(uint8_t data);
 uint8_t UART_receive();
+void UART_receiveString(uint8_t *string);
 
 
 #endif /* UART_2_H_ */

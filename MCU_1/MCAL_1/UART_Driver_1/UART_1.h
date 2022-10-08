@@ -19,6 +19,7 @@ void UART_init(uint16_t baud, uint8_t bitnum, uint8_t stopbits);
 void UART_set_BAUD(uint16_t baud);
 void UART_set_frame(uint8_t bitnum, uint8_t stopbits);
 void UART_transmit(uint8_t data);
+void UART_transmitString(uint8_t *string_data);
 uint8_t UART_receive();
 
 #endif /* UART_1_H_ */
