@@ -21,7 +21,7 @@ int main(void)
 	DDRB = 0xFF;
     EEPROM_init();
 	
-	EEPROM_write_byte(data_w);
+	EEPROM_write_string(pass_w);
 	_delay_ms(500);
 	EEPROM_read_byte(&p);
 	_delay_ms(500);

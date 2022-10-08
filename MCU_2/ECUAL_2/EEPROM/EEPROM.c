@@ -33,3 +33,16 @@ void EEPROM_read_byte(uint8_t **data)
 	TWI_read_nack(*data);
 	TWI_stop();
 }
+
+void EEPROM_write_string(uint8_t *data)
+{
+	TWI_start(0b10100110+Write);
+	TWI_write_addr(0x00);
+	TWI_write_addr(0x08);
+	
+	for(uint8_t i=0; *(data+i)!='\0'; i++){
+		TWI_write_data(*(data+i));
+	}
+	
+	TWI_stop();
+}
