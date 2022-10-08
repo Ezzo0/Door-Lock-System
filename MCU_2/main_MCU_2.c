@@ -10,25 +10,27 @@
 #include "MCAL_2/TWI_Driver_2/TWI_2.h"
 #include "ECUAL_2/EEPROM/EEPROM.h"
 
-uint8_t data_w = 5;
+uint8_t data_w=0;
 uint8_t data_r;
 uint8_t *p = &data_r;
 
 int main(void)
 {
 	uint8_t pass_w[16] = "mostafa";
-	uint8_t pass_r[16];
+	uint8_t pass_r[16] = {0};
 	DDRB = 0xFF;
     EEPROM_init();
+	UART_init();
 	
-	EEPROM_write_string(pass_w);
-	_delay_ms(500);
-	EEPROM_read_byte(&p);
-	_delay_ms(500);
-	PORTB = data_r;
+
 	
     while (1) 
     {
+		UART_receiveString(pass_r);
+		if(pass_r[0] !=0){
+			EEPROM_write_string(pass_r);
+		}
+
 		
     }
 }

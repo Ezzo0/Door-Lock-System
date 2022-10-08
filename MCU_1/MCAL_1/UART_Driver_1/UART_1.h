@@ -15,7 +15,7 @@
 #define Data_bits 8
 #define Stop_bits 1
 
-void UART_init(uint16_t baud, uint8_t bitnum, uint8_t stopbits);
+void UART_init();
 void UART_set_BAUD(uint16_t baud);
 void UART_set_frame(uint8_t bitnum, uint8_t stopbits);
 void UART_transmit(uint8_t data);

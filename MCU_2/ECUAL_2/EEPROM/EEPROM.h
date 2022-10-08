@@ -18,6 +18,6 @@ void EEPROM_write_byte(uint8_t data);
 void EEPROM_read_byte(uint8_t **data);
 
 void EEPROM_write_string(uint8_t *data);
-void EEPROM_read_byte(uint8_t **data);
+void EEPROM_read_string(uint8_t *data);
 
 #endif /* EEPROM_H_ */

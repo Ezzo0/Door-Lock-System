@@ -6,7 +6,7 @@
  */ 
 #include "lcd.h"
 
-char str[] = {'W','e','l','c','o','m','e','.','.','.'};
+uint8_t str[] = {'W','e','l','c','o','m','e','.','.','.'};
 
 void LCD_8_bit_init()
 {

@@ -7,27 +7,36 @@
  #include "ECUAL_1/Keypad_Driver/keypad.h"
  #include "ECUAL_1/LCD_Driver/lcd.h"
 
-uint8_t data;
+uint8_t data[16] = {0};
+uint8_t clr[16] = {0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF};
+uint8_t ct =0;
+uint8_t temp=0;
 int main(void)
 {
 	Keypad_init();
 	LCD_8_bit_init();
-	DIO_init(port_B,PIN_0,OUT);
-	DIO_init(port_B,PIN_1,OUT);
-	DIO_init(port_B,PIN_2,OUT);
+	UART_init();
+
     while (1) 
     {
-		data = Keypad_pressed();
-		if(data == '0')
-			DIO_write(port_B,PIN_0,HIGH);
-		else if(data == '1')
-			DIO_write(port_B,PIN_1,HIGH);
-		else if(data == '2')
-			DIO_write(port_B,PIN_2,HIGH);
-		if(data != NOT_pressed)
+		temp = Keypad_pressed();
+		if( temp == '=')
 		{
-			LCD_8_bit_sendChar(data);
+			UART_transmitString(data);
 		}
+		else if(temp != 'c')
+		{
+			data[ct] = temp;
+			
+			if(data[ct] != NOT_pressed)
+			{
+				LCD_8_bit_sendChar(data[ct]);
+				ct++;
+			}
+		}else{
+			UART_transmitString(clr);
+		}
+		
     }
 }
 

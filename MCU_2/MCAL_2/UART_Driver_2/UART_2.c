@@ -6,10 +6,10 @@
  */ 
 #include "UART_2.h"
 
-void UART_init(uint16_t baud, uint8_t bitnum, uint8_t stopbits)
+void UART_init()
 {
 	// Set baud rate
-	UART_set_BAUD(baud);
+	UART_set_BAUD(51);
 	
 	// Enable receiver and transmitter
 	set_pin(UCSRB,RXEN);
