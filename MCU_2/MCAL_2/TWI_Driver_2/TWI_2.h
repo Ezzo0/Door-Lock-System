@@ -11,14 +11,8 @@
 
 #include "../../Utilities_2/Macros_2.h"
 
-#define SCL_frq 400000U
+#define SCL_frq 400000UL
 
-// Returns
-typedef enum EN_returnStatus_t
-{
-	EVENT_OK, START_NOT_SENT, REPEATED_START_NOT_SENT, SLA_W_ACK_SENT, SLA_W_NACK_SENT, SLA_R_ACK_SENT, SLA_R_NACK_SENT,SLA_RW_FAILED, 
-	DATA_W_ACK_SENT, DATA_W_NACK_SENT,DATA_W_FAILED, DATA_R_ACK_SENT, DATA_R_NACK_SENT,DATA_R_FAILED
-}EN_returnStatus_t;
 
 //States
 #define START_STATE 0x08
@@ -32,6 +26,14 @@ typedef enum EN_returnStatus_t
 #define DATA_R_ACK_STATE 0x50
 #define DATA_R_NACK_STATE 0x58
 
+
+// Returns
+typedef enum EN_returnStatus_t
+{
+	EVENT_OK, START_NOT_SENT, REPEATED_START_NOT_SENT, SLA_W_ACK_SENT, SLA_W_NACK_SENT, SLA_R_ACK_SENT, SLA_R_NACK_SENT,SLA_RW_FAILED, 
+	DATA_W_ACK_SENT, DATA_W_NACK_SENT,DATA_W_FAILED, DATA_R_ACK_SENT, DATA_R_NACK_SENT,DATA_R_FAILED
+}EN_returnStatus_t;
+
 #define Write 0
 #define Read 1
 
@@ -41,11 +43,13 @@ typedef enum EN_returnStatus_t
 // Setting bit rate value
 #define BitRate ((F_CPU / SCL_frq) - 16) / (2 * pow(4,(TWSR & ((1 << TWPS0) | (1 << TWPS1)))))
 
-void TWI_init(uint8_t prescalar);
-EN_returnStatus_t TWI_start();
-EN_returnStatus_t repeated_TWI_start();
-EN_returnStatus_t TWI_send_address(uint8_t address, uint8_t r_or_w);
-EN_returnStatus_t TWI_data_event(uint8_t *data, uint8_t r_or_w, uint8_t ack);
+void TWI_init();
+void TWI_start(uint8_t addr);
+void TWI_write_data(uint8_t data);
+void TWI_write_addr(uint8_t mem_addr);
+void TWI_read_ack(uint8_t *data);
+void TWI_read_nack(uint8_t *data);
 void TWI_stop();
+EN_returnStatus_t TWI_get_status();
 
 #endif /* TWI_H_ */

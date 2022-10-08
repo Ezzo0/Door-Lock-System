@@ -18,11 +18,13 @@ void UART_init(uint16_t baud, uint8_t bitnum, uint8_t stopbits)
 	// Set frame format
 	UART_set_frame(8,2);
 }
+
 void UART_set_BAUD(uint16_t baud)
 {
 	UBRRH = (uint8_t)(baud >> 8); // Higher nibble
 	UBRRL = (uint8_t)baud; // lower nibble
 }
+
 void UART_set_frame(uint8_t bitnum, uint8_t stopbits)
 {
 	switch(bitnum)
@@ -80,6 +82,7 @@ void UART_set_frame(uint8_t bitnum, uint8_t stopbits)
 		}
 	}
 }
+
 void UART_transmit(uint8_t data)
 {
 	// Wait for empty transmit buffer
@@ -88,6 +91,8 @@ void UART_transmit(uint8_t data)
 	// Put data into buffer, sends the data
 	UDR = data;
 }
+
+
 uint8_t UART_receive()
 {
 	/* Wait for data to be received */

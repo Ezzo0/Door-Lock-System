@@ -3,9 +3,9 @@
  <FRAME activewindow="0">
   <PLACEMENT>2c0000000200000003000000ffffffffffffffffffffffffffffffffb20000000c000000ce060000fa030000</PLACEMENT>
   <WINDOW type="default" module="ISIS">
-   <editor metric="0" gridmajor="2540000" mode="00000001" zoom="0" scale="113" flipped="0" gridminor="254000" gridmode="32" snapidx="2" snap="254000" xcursor="0" orgmode="0" snaprange="127000">
+   <editor metric="0" gridmajor="25400000" mode="00000000" zoom="0" scale="75" flipped="0" gridminor="508000" gridmode="32" snapidx="2" snap="254000" xcursor="0" orgmode="0" snaprange="169333">
     <world y1="-8890000" x1="-12700000" y2="8890000" x2="12700000"/>
-    <centre x="16707012" y="-129647"/>
+    <centre x="11226799" y="-1500330"/>
     <origin x="0" y="0"/>
    </editor>
   </WINDOW>
@@ -18,9 +18,9 @@
   </editor>
  </MODULE>
  <MODULE name="ISIS">
-  <editor metric="0" gridmajor="2540000" mode="00000001" zoom="0" scale="113" flipped="0" gridminor="254000" gridmode="32" snapidx="2" snap="254000" xcursor="0" orgmode="0" snaprange="127000">
+  <editor metric="0" gridmajor="25400000" mode="00000000" zoom="0" scale="75" flipped="0" gridminor="508000" gridmode="32" snapidx="2" snap="254000" xcursor="0" orgmode="0" snaprange="169333">
    <world y1="-8890000" x1="-12700000" y2="8890000" x2="12700000"/>
-   <centre x="16707012" y="-129647"/>
+   <centre x="11226799" y="-1500330"/>
    <origin x="0" y="0"/>
   </editor>
  </MODULE>
@@ -31,6 +31,7 @@
      <ITEM name="Message Column Width">661</ITEM>
      <ITEM name="ShowGrid">No</ITEM>
      <ITEM name="Source Column Width">100</ITEM>
+     <ITEM name="Time Column Width">120</ITEM>
      <ITEM name="Version">100</ITEM>
     </PROPERTIES>
    </POPUP>
@@ -51,7 +52,7 @@
      <ITEM name="nItems">0</ITEM>
     </PROPERTIES>
    </POPUP>
-   <POPUP w="8" x="88" flags="0000000a" y="200" h="32" pid="101" iid="2">
+   <POPUP w="16" x="135" flags="0000000a" y="185" h="32" pid="101" iid="2">
     <PROPERTIES>
      <ITEM name="DataType">2</ITEM>
      <ITEM name="DispChars">Yes</ITEM>
@@ -94,7 +95,7 @@
      <ITEM name="TopLineAddress">00000000</ITEM>
     </PROPERTIES>
    </POPUP>
-   <POPUP w="16" x="188" flags="80000000" y="300" h="32" pid="14" iid="3">
+   <POPUP w="16" x="188" flags="00000000" y="300" h="32" pid="14" iid="3">
     <PROPERTIES>
      <ITEM name="DataType">2</ITEM>
      <ITEM name="DispChars">Yes</ITEM>
@@ -157,7 +158,7 @@
      <ITEM name="TopLineAddress">00000000</ITEM>
     </PROPERTIES>
    </POPUP>
-   <POPUP w="16" x="328" flags="80000000" y="440" h="32" pid="14" iid="1">
+   <POPUP w="16" x="328" flags="00000000" y="440" h="32" pid="14" iid="1">
     <PROPERTIES>
      <ITEM name="DataType">2</ITEM>
      <ITEM name="DispChars">Yes</ITEM>
@@ -187,18 +188,18 @@
      <ITEM name="TopLineAddress">00000020</ITEM>
     </PROPERTIES>
    </POPUP>
-   <POPUP w="1030" x="364" flags="00000022" y="514" h="378" pid="0" iid="14">
+   <POPUP w="1030" x="522" flags="00000022" y="180" h="378" pid="0" iid="14">
     <PROPERTIES>
-     <ITEM name="ComboBox1000">A</ITEM>
-     <ITEM name="ComboBox1001">S</ITEM>
-     <ITEM name="ComboBox1002">Sr</ITEM>
-     <ITEM name="ComboBox1003">P</ITEM>
-     <ITEM name="ComboBox1004">N</ITEM>
-     <ITEM name="ComboBox1005">S</ITEM>
-     <ITEM name="ComboBox1006">Sr</ITEM>
-     <ITEM name="ComboBox1007">P</ITEM>
-     <ITEM name="ComboBox1008">A</ITEM>
-     <ITEM name="ComboBox1009">N</ITEM>
+     <ITEM name="ComboBox1000">0x6D</ITEM>
+     <ITEM name="ComboBox1001">A</ITEM>
+     <ITEM name="ComboBox1002">0x30</ITEM>
+     <ITEM name="ComboBox1003">S</ITEM>
+     <ITEM name="ComboBox1004">Sr</ITEM>
+     <ITEM name="ComboBox1005">P</ITEM>
+     <ITEM name="ComboBox1006">N</ITEM>
+     <ITEM name="ComboBox1007">S</ITEM>
+     <ITEM name="ComboBox1008">Sr</ITEM>
+     <ITEM name="ComboBox1009">P</ITEM>
      <ITEM name="HSplitter1Pos">6</ITEM>
      <ITEM name="VSplitter1Pos">368</ITEM>
     </PROPERTIES>

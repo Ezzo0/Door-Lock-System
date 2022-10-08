@@ -13,11 +13,11 @@
 #include "../../Utilities_2/Macros_2.h"
 
 
+void EEPROM_init();
+void EEPROM_write_byte(uint8_t data);
+void EEPROM_read_byte(uint8_t **data);
 
-#define EEPROM_ADDRESS 0xAE
-
-void EEPROM_inti(uint8_t prescalar);
-void EEPROM_write(uint8_t *data);
-void EEPROM_read(uint8_t *data);
+void EEPROM_write_string(uint8_t *data);
+void EEPROM_read_byte(uint8_t **data);
 
 #endif /* EEPROM_H_ */
