@@ -9,14 +9,14 @@
 void UART_init()
 {
 	// Set baud rate
-	UART_set_BAUD(51);
+	UART_set_BAUD(BAUD_rate);
 	
 	// Enable receiver and transmitter
 	set_pin(UCSRB,RXEN);
 	set_pin(UCSRB,TXEN);
 	
 	// Set frame format
-	UART_set_frame(8,2);
+	UART_set_frame(Data_bits,Stop_bits);
 }
 
 void UART_set_BAUD(uint16_t baud)

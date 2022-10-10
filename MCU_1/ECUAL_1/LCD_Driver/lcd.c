@@ -4,9 +4,16 @@
  * Created: 10/3/2022 1:45:33 PM
  *  Author: 3zz
  */ 
+
 #include "lcd.h"
 
-uint8_t str[] = {'W','e','l','c','o','m','e','.','.','.'};
+// Displayed strings
+uint8_t welcomeStr[] = "Welcome To";
+uint8_t welcomeStr_2[] = "Door Lock System";
+uint8_t enter_pass_str[] = "Enter password";
+uint8_t option_1[] = "1.Open the door";
+uint8_t option_2[] = "2.Alter Password";
+uint8_t password_checker = Password_was_not_entered;
 
 void LCD_8_bit_init()
 {
@@ -22,9 +29,14 @@ void LCD_8_bit_init()
 	LCD_8_bit_sendCommand(0x06); // Auto increment for the cursor
 	LCD_8_bit_sendCommand(0x01); // Clear Display
 	LCD_8_bit_sendCommand(0x80); // Cursor at home position
-	LCD_8_bit_sendString(str); // Displaying welcome word
-	LCD_8_bit_sendCommand(0xC0); // Cursor at 2nd line
-
+	LCD_8_bit_welcoming(); // Displaying welcoming words
+	_delay_ms(1000); // wait for 1 sec
+	LCD_8_bit_clear_all(); // Clear every char on LCD
+	
+	if(password_checker == Password_was_not_entered)
+		LCD_8_bit_enter_pass();
+	else
+		LCD_8_bit_display_options();
 }
 
 void LCD_8_bit_sendCommand(uint8_t cmnd)
@@ -51,21 +63,38 @@ void LCD_8_bit_sendChar(uint8_t char_data) // Writing function on LCD
 
 void LCD_8_bit_cursor_left()
 {
-	LCD_8_bit_sendCommand(0x10);
+	LCD_8_bit_sendCommand(0x10); // Move cursor to left
 }
 
 void LCD_8_bit_cursor_right()
 {
-	LCD_8_bit_sendCommand(0x14);
+	LCD_8_bit_sendCommand(0x14); // Move cursor to right
 }
 
 void LCD_8_bit_clear_all()
 {
 	LCD_8_bit_sendCommand(0x01); // Clear Display
 	LCD_8_bit_sendCommand(0x80); // Cursor at home position
-	LCD_8_bit_sendString(str); // Displaying welcome word
-	LCD_8_bit_sendCommand(0xC0); // Cursor at 2nd line
+}
 
+void LCD_8_bit_welcoming()
+{
+	LCD_8_bit_sendString(welcomeStr); // Displaying welcome words
+	LCD_8_bit_sendCommand(0xC0); // Cursor at 2nd line
+	LCD_8_bit_sendString(welcomeStr_2); // Displaying second welcome words
+}
+
+void LCD_8_bit_display_options()
+{
+	LCD_8_bit_sendString(option_1); // Displaying option words
+	LCD_8_bit_sendCommand(0xC0); // Cursor at 2nd line
+	LCD_8_bit_sendString(option_2); // Displaying second option words
+}
+
+void LCD_8_bit_enter_pass()
+{
+	LCD_8_bit_sendString(enter_pass_str); // Displaying option words
+	LCD_8_bit_sendCommand(0xC0); // Cursor at 2nd line
 }
 
 void LCD_8_bit_sendString(uint8_t *string_data)

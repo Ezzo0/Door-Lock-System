@@ -20,12 +20,18 @@
 #define RW_PIN PIN_6
 #define E_PIN PIN_7
 
+#define Password_was_not_entered 0
+#define Password_was_entered 1
+
 void LCD_8_bit_init();
 void LCD_8_bit_sendCommand(uint8_t cmnd);
 void LCD_8_bit_sendChar(uint8_t char_data);
 void LCD_8_bit_cursor_left();
 void LCD_8_bit_cursor_right();
 void LCD_8_bit_clear_all();
+void LCD_8_bit_welcoming();
+void LCD_8_bit_display_options();
+void LCD_8_bit_enter_pass();
 void LCD_8_bit_sendString(uint8_t *string_data);
 
 
