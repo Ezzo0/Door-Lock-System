@@ -11,21 +11,21 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
   3 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000ad0  2**2
                   CONTENTS, READONLY
-  4 .debug_aranges 000000f8  00000000  00000000  00000b0c  2**0
+  4 .debug_aranges 00000100  00000000  00000000  00000b0c  2**0
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_info   00000cdc  00000000  00000000  00000c04  2**0
+  5 .debug_info   00000daf  00000000  00000000  00000c0c  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_abbrev 00000878  00000000  00000000  000018e0  2**0
+  6 .debug_abbrev 00000887  00000000  00000000  000019bb  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_line   000007fa  00000000  00000000  00002158  2**0
+  7 .debug_line   00000838  00000000  00000000  00002242  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_frame  000001c4  00000000  00000000  00002954  2**2
+  8 .debug_frame  000001e4  00000000  00000000  00002a7c  2**2
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_str    00000561  00000000  00000000  00002b18  2**0
+  9 .debug_str    00000576  00000000  00000000  00002c60  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_loc    0000039b  00000000  00000000  00003079  2**0
+ 10 .debug_loc    00000437  00000000  00000000  000031d6  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_ranges 000000b8  00000000  00000000  00003414  2**0
+ 11 .debug_ranges 000000c0  00000000  00000000  0000360d  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -159,7 +159,7 @@ Disassembly of section .text:
  110:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
 
 00000114 <EEPROM_init>:
-	TWI_write_addr(0x08);
+	TWI_write_addr(0x00);
 	TWI_stop();
 	TWI_start(0b10100110+Read);
 	TWI_read_nack(*data);
@@ -182,8 +182,8 @@ void EEPROM_write_string(uint8_t *data)
 	TWI_write_addr(0x00);
  128:	80 e0       	ldi	r24, 0x00	; 0
  12a:	0e 94 05 01 	call	0x20a	; 0x20a <TWI_write_addr>
-	TWI_write_addr(0x08);
- 12e:	88 e0       	ldi	r24, 0x08	; 8
+	TWI_write_addr(0x00);
+ 12e:	80 e0       	ldi	r24, 0x00	; 0
  130:	0e 94 05 01 	call	0x20a	; 0x20a <TWI_write_addr>
 	
 	for(uint8_t i=0; *(data+i)!='\0'; i++){
@@ -194,7 +194,7 @@ void EEPROM_write_string(uint8_t *data)
 {
 	TWI_start(0b10100110+Write);
 	TWI_write_addr(0x00);
-	TWI_write_addr(0x08);
+	TWI_write_addr(0x00);
 	
 	for(uint8_t i=0; *(data+i)!='\0'; i++){
  13c:	cf 5f       	subi	r28, 0xFF	; 255
@@ -209,6 +209,7 @@ void EEPROM_write_string(uint8_t *data)
 	
 	TWI_stop();
  14a:	0e 94 1b 01 	call	0x236	; 0x236 <TWI_stop>
+}
  14e:	cf 91       	pop	r28
  150:	1f 91       	pop	r17
  152:	0f 91       	pop	r16
@@ -466,7 +467,7 @@ void TWI_stop()
  2ec:	8a b1       	in	r24, 0x0a	; 10
  2ee:	88 60       	ori	r24, 0x08	; 8
  2f0:	8a b9       	out	0x0a, r24	; 10
- 2f2:	62 e0       	ldi	r22, 0x02	; 2
+ 2f2:	61 e0       	ldi	r22, 0x01	; 1
  2f4:	88 e0       	ldi	r24, 0x08	; 8
  2f6:	0e 94 24 01 	call	0x248	; 0x248 <UART_set_frame>
  2fa:	08 95       	ret

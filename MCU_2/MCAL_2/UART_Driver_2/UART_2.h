@@ -12,7 +12,7 @@
 
 #include "../../Utilities_2/Macros_2.h"
 
-#define BAUD_rate 9600
+#define BAUD_rate 51
 #define Data_bits 8
 #define Stop_bits 1
 
