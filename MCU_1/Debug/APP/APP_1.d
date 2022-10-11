@@ -19,7 +19,9 @@ APP/APP_1.d APP/APP_1.o: ../APP/APP_1.c ../APP/APP_1.h \
  ../APP/../ECUAL_1/Keypad_Driver/../../MCAL_1/DIO_Driver_1/DIO_1.h \
  d:\embedded\ projects\door\ lock\door-lock-system\mcu_1\utilities_1\macros_1.h \
  ../APP/../ECUAL_1/LCD_Driver/lcd.h \
- ../APP/../ECUAL_1/LCD_Driver/../../MCAL_1/DIO_Driver_1/DIO_1.h
+ ../APP/../ECUAL_1/LCD_Driver/../../MCAL_1/DIO_Driver_1/DIO_1.h \
+ ../APP/../MCAL_1/Internal_EEPROM_Driver/internal_eeprom.h \
+ ../APP/../MCAL_1/Internal_EEPROM_Driver/../../Utilities_1/Macros_1.h
 
 ../APP/APP_1.h:
 
@@ -64,3 +66,7 @@ d:\embedded\ projects\door\ lock\door-lock-system\mcu_1\utilities_1\macros_1.h:
 ../APP/../ECUAL_1/LCD_Driver/lcd.h:
 
 ../APP/../ECUAL_1/LCD_Driver/../../MCAL_1/DIO_Driver_1/DIO_1.h:
+
+../APP/../MCAL_1/Internal_EEPROM_Driver/internal_eeprom.h:
+
+../APP/../MCAL_1/Internal_EEPROM_Driver/../../Utilities_1/Macros_1.h:

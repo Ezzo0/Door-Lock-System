@@ -160,6 +160,12 @@
     <Compile Include="MCAL_1\DIO_Driver_1\DIO_1.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="MCAL_1\Internal_EEPROM_Driver\internal_eeprom.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL_1\Internal_EEPROM_Driver\internal_eeprom.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="MCAL_1\UART_Driver_1\UART_1.c">
       <SubType>compile</SubType>
     </Compile>
@@ -175,6 +181,7 @@
     <Folder Include="ECUAL_1\LCD_Driver" />
     <Folder Include="MCAL_1" />
     <Folder Include="MCAL_1\DIO_Driver_1" />
+    <Folder Include="MCAL_1\Internal_EEPROM_Driver" />
     <Folder Include="MCAL_1\UART_Driver_1" />
     <Folder Include="APP" />
     <Folder Include="ECUAL_1" />

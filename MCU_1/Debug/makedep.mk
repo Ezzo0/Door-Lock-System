@@ -12,5 +12,7 @@ main_MCU_1.c
 
 MCAL_1\DIO_Driver_1\DIO_1.c
 
+MCAL_1\Internal_EEPROM_Driver\internal_eeprom.c
+
 MCAL_1\UART_Driver_1\UART_1.c
 

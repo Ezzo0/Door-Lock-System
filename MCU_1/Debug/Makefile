@@ -37,6 +37,7 @@ SUBDIRS :=  \
 ../ECUAL_1/LCD_Driver \
 ../MCAL_1 \
 ../MCAL_1/DIO_Driver_1 \
+../MCAL_1/Internal_EEPROM_Driver \
 ../MCAL_1/UART_Driver_1 \
 ../APP \
 ../ECUAL_1 \
@@ -50,6 +51,7 @@ C_SRCS +=  \
 ../ECUAL_1/LCD_Driver/lcd.c \
 ../main_MCU_1.c \
 ../MCAL_1/DIO_Driver_1/DIO_1.c \
+../MCAL_1/Internal_EEPROM_Driver/internal_eeprom.c \
 ../MCAL_1/UART_Driver_1/UART_1.c
 
 
@@ -65,6 +67,7 @@ ECUAL_1/Keypad_Driver/keypad.o \
 ECUAL_1/LCD_Driver/lcd.o \
 main_MCU_1.o \
 MCAL_1/DIO_Driver_1/DIO_1.o \
+MCAL_1/Internal_EEPROM_Driver/internal_eeprom.o \
 MCAL_1/UART_Driver_1/UART_1.o
 
 OBJS_AS_ARGS +=  \
@@ -73,6 +76,7 @@ ECUAL_1/Keypad_Driver/keypad.o \
 ECUAL_1/LCD_Driver/lcd.o \
 main_MCU_1.o \
 MCAL_1/DIO_Driver_1/DIO_1.o \
+MCAL_1/Internal_EEPROM_Driver/internal_eeprom.o \
 MCAL_1/UART_Driver_1/UART_1.o
 
 C_DEPS +=  \
@@ -81,6 +85,7 @@ ECUAL_1/Keypad_Driver/keypad.d \
 ECUAL_1/LCD_Driver/lcd.d \
 main_MCU_1.d \
 MCAL_1/DIO_Driver_1/DIO_1.d \
+MCAL_1/Internal_EEPROM_Driver/internal_eeprom.d \
 MCAL_1/UART_Driver_1/UART_1.d
 
 C_DEPS_AS_ARGS +=  \
@@ -89,6 +94,7 @@ ECUAL_1/Keypad_Driver/keypad.d \
 ECUAL_1/LCD_Driver/lcd.d \
 main_MCU_1.d \
 MCAL_1/DIO_Driver_1/DIO_1.d \
+MCAL_1/Internal_EEPROM_Driver/internal_eeprom.d \
 MCAL_1/UART_Driver_1/UART_1.d
 
 OUTPUT_FILE_PATH +=MCU_1.elf
@@ -134,6 +140,13 @@ ECUAL_1/LCD_Driver/lcd.o: ../ECUAL_1/LCD_Driver/lcd.c
 	
 
 MCAL_1/DIO_Driver_1/DIO_1.o: ../MCAL_1/DIO_Driver_1/DIO_1.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)D:\IDEs\Microchip studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"D:\IDEs\Microchip studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32a -B "D:\IDEs\Microchip studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+MCAL_1/Internal_EEPROM_Driver/internal_eeprom.o: ../MCAL_1/Internal_EEPROM_Driver/internal_eeprom.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)D:\IDEs\Microchip studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"D:\IDEs\Microchip studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32a -B "D:\IDEs\Microchip studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

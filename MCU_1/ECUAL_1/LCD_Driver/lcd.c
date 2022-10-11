@@ -13,7 +13,12 @@ uint8_t welcomeStr_2[] = "Door Lock System";
 uint8_t enter_pass_str[] = "Enter password";
 uint8_t option_1[] = "1.Open the door";
 uint8_t option_2[] = "2.Alter Password";
-uint8_t password_checker = Password_was_not_entered;
+uint8_t least_pass_1[] = "At least Enter";
+uint8_t least_pass_2[] = "4 Numbers";
+uint8_t wrong_pass[] = "Wrong Password";
+uint8_t loading[] = "LOADING....";
+uint8_t opening_door[] = "Opening The DOOR";
+uint8_t closing_door[] = "Closing The DOOR";
 
 void LCD_8_bit_init()
 {
@@ -32,11 +37,6 @@ void LCD_8_bit_init()
 	LCD_8_bit_welcoming(); // Displaying welcoming words
 	_delay_ms(1000); // wait for 1 sec
 	LCD_8_bit_clear_all(); // Clear every char on LCD
-	
-	if(password_checker == Password_was_not_entered)
-		LCD_8_bit_enter_pass();
-	else
-		LCD_8_bit_display_options();
 }
 
 void LCD_8_bit_sendCommand(uint8_t cmnd)
@@ -95,6 +95,33 @@ void LCD_8_bit_enter_pass()
 {
 	LCD_8_bit_sendString(enter_pass_str); // Displaying option words
 	LCD_8_bit_sendCommand(0xC0); // Cursor at 2nd line
+}
+
+void LCD_8_bit_4_chars_needed()
+{
+	LCD_8_bit_sendString(least_pass_1); // Displaying words 
+	LCD_8_bit_sendCommand(0xC0); // Cursor at 2nd line
+	LCD_8_bit_sendString(least_pass_2); // Displaying the rest of words
+}
+
+void LCD_8_bit_wrong_pass()
+{
+	LCD_8_bit_sendString(wrong_pass); // Displaying words 
+}
+
+void LCD_8_bit_loading()
+{
+	LCD_8_bit_sendString(loading); // Displaying words 
+}
+
+void LCD_8_bit_opening()
+{
+	LCD_8_bit_sendString(opening_door); // Displaying opening words
+}
+
+void LCD_8_bit_closing()
+{
+	LCD_8_bit_sendString(closing_door); // Displaying closing words
 }
 
 void LCD_8_bit_sendString(uint8_t *string_data)

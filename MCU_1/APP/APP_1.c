@@ -11,66 +11,152 @@ uint8_t password[17] = {'\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','
 uint8_t clr[17] = {0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,'\0'};
 uint8_t keypadInput;
 uint8_t cnt = 0;
-uint8_t option;
-extern uint8_t password_checker;
+uint8_t option = Not_choosed;
+uint8_t choosed_option = Not_choosed;
+uint8_t password_checker;
+uint8_t matched_password = Matched;
 
 void app_init()
 {
 	Keypad_init();
 	LCD_8_bit_init();
 	UART_init();
-	DDRB = 0xFF;
+}
+
+void reset_password_array(uint8_t *array)
+{
+	for(uint8_t i = 0; i < 17; ++i)
+	{
+		array[i] = '\0';
+	}
+	cnt = 0;
+}
+
+void firstOption()
+{
+	while (1)
+	{
+		keypadInput = Keypad_pressed();
+		
+		if(keypadInput == '=')
+		{
+			if(cnt >= 4)
+			{
+				UART_transmitString(password);
+				LCD_8_bit_clear_all();
+				LCD_8_bit_loading();
+				_delay_ms(1000);
+				reset_password_array(password);
+				break;
+			}
+			else
+			{
+				LCD_8_bit_clear_all();
+				LCD_8_bit_4_chars_needed();
+				_delay_ms(2000);
+				reset_password_array(password);
+				LCD_8_bit_clear_all();
+				LCD_8_bit_enter_pass();
+			}
+		}
+		else if(keypadInput == 'c')
+		{
+			LCD_8_bit_clear_all();
+			LCD_8_bit_enter_pass();
+			reset_password_array(password);
+		}
+		else
+		{
+			if(keypadInput != NOT_pressed)
+			{
+				LCD_8_bit_sendChar(keypadInput);
+				password[cnt] = keypadInput;
+				if(cnt < 16)
+					++cnt;
+			}
+		}
+	}
+	if(password_checker == Password_was_entered)
+		matched_password = UART_receive();
+}
+
+void secondOption()
+{
+	firstOption();
+	if(matched_password == Matched)
+	{
+		UART_transmitString(clr);
+		LCD_8_bit_clear_all();
+		LCD_8_bit_enter_pass();
+		firstOption();
+		choosed_option = Not_choosed;
+		option = Not_choosed;
+	}
+	else
+	{
+		LCD_8_bit_clear_all();
+		LCD_8_bit_wrong_pass();
+		_delay_ms(2000);
+		LCD_8_bit_clear_all();
+		LCD_8_bit_enter_pass();
+	}
 }
 
 void app_start()
-{
+{	
 	while(1)
 	{
-		if(password_checker == Password_was_entered)
+		password_checker = int_eeprom_r(0x00);
+		UART_transmit(password_checker);
+		if(password_checker == Password_was_not_entered)
 		{
-			keypadInput = Keypad_pressed();
-			set_pin(PORTB,PIN_0);
-			clr_pin(PORTB,PIN_1);
-			if(keypadInput == First_option)
-			{
-				LCD_8_bit_clear_all();
-				LCD_8_bit_enter_pass();
-				password_checker = Password_was_not_entered;
-			}
-			else if(keypadInput == Second_option)
-			{
-				LCD_8_bit_clear_all();
-				LCD_8_bit_enter_pass();
-				password_checker = Password_was_not_entered;
-			}
+			LCD_8_bit_enter_pass();
+			firstOption();
+			int_eeprom_w(0x00,1);
 		}
-		else if(password_checker == Password_was_not_entered)
+		
+		else if(password_checker == Password_was_entered)
 		{
-			keypadInput = Keypad_pressed();
-			set_pin(PORTB,PIN_1);
-			clr_pin(PORTB,PIN_0);
-			if(keypadInput == '=')
+			if(choosed_option == Not_choosed)
 			{
-				UART_transmitString(password);
-				password_checker = Password_was_entered;
 				LCD_8_bit_clear_all();
 				LCD_8_bit_display_options();
-			}
-			
-			else if(keypadInput == 'c')
-			{
+				option = Keypad_pressed();
+				while(option != First_option && option != Second_option)
+					option = Keypad_pressed();
+				
 				LCD_8_bit_clear_all();
 				LCD_8_bit_enter_pass();
+				choosed_option = Choosed;
 			}
 			
-			else
+			if(option == First_option)
 			{
-				if(keypadInput != NOT_pressed)
+				firstOption();
+				if(matched_password == Matched)
 				{
-					LCD_8_bit_sendChar(keypadInput);
-					password[cnt] = keypadInput;
-					++cnt;
+					LCD_8_bit_clear_all();
+					LCD_8_bit_opening();
+					_delay_ms(5000);
+					LCD_8_bit_clear_all();
+					LCD_8_bit_closing();
+					_delay_ms(2000);
+					choosed_option = Not_choosed;
+					option = Not_choosed;
 				}
+				else
+				{
+					LCD_8_bit_clear_all();
+					LCD_8_bit_wrong_pass();
+					_delay_ms(2000);
+					LCD_8_bit_clear_all();
+					LCD_8_bit_enter_pass();
+				}
+			}
+			
+			else if(option == Second_option)
+			{
+				secondOption();
 			}
 		}
 	}
