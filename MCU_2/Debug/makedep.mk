@@ -6,6 +6,8 @@ APP_2\APP_2.c
 
 ECUAL_2\EEPROM\EEPROM.c
 
+ECUAL_2\MOTOR_Driver\motor.c
+
 main_MCU_2.c
 
 MCAL_2\DIO_Driver_2\DIO_2.c

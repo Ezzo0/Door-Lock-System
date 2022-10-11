@@ -35,6 +35,7 @@ LINKER_SCRIPT_DEP:=
 SUBDIRS :=  \
 ../APP_2 \
 ../ECUAL_2/EEPROM \
+../ECUAL_2/MOTOR_Driver \
 ../MCAL_2 \
 ../MCAL_2/DIO_Driver_2 \
 ../MCAL_2/TWI_Driver_2 \
@@ -47,6 +48,7 @@ SUBDIRS :=  \
 C_SRCS +=  \
 ../APP_2/APP_2.c \
 ../ECUAL_2/EEPROM/EEPROM.c \
+../ECUAL_2/MOTOR_Driver/motor.c \
 ../main_MCU_2.c \
 ../MCAL_2/DIO_Driver_2/DIO_2.c \
 ../MCAL_2/TWI_Driver_2/TWI_2.c \
@@ -62,6 +64,7 @@ ASM_SRCS +=
 OBJS +=  \
 APP_2/APP_2.o \
 ECUAL_2/EEPROM/EEPROM.o \
+ECUAL_2/MOTOR_Driver/motor.o \
 main_MCU_2.o \
 MCAL_2/DIO_Driver_2/DIO_2.o \
 MCAL_2/TWI_Driver_2/TWI_2.o \
@@ -70,6 +73,7 @@ MCAL_2/UART_Driver_2/UART_2.o
 OBJS_AS_ARGS +=  \
 APP_2/APP_2.o \
 ECUAL_2/EEPROM/EEPROM.o \
+ECUAL_2/MOTOR_Driver/motor.o \
 main_MCU_2.o \
 MCAL_2/DIO_Driver_2/DIO_2.o \
 MCAL_2/TWI_Driver_2/TWI_2.o \
@@ -78,6 +82,7 @@ MCAL_2/UART_Driver_2/UART_2.o
 C_DEPS +=  \
 APP_2/APP_2.d \
 ECUAL_2/EEPROM/EEPROM.d \
+ECUAL_2/MOTOR_Driver/motor.d \
 main_MCU_2.d \
 MCAL_2/DIO_Driver_2/DIO_2.d \
 MCAL_2/TWI_Driver_2/TWI_2.d \
@@ -86,6 +91,7 @@ MCAL_2/UART_Driver_2/UART_2.d
 C_DEPS_AS_ARGS +=  \
 APP_2/APP_2.d \
 ECUAL_2/EEPROM/EEPROM.d \
+ECUAL_2/MOTOR_Driver/motor.d \
 main_MCU_2.d \
 MCAL_2/DIO_Driver_2/DIO_2.d \
 MCAL_2/TWI_Driver_2/TWI_2.d \
@@ -113,6 +119,13 @@ APP_2/APP_2.o: ../APP_2/APP_2.c
 	
 
 ECUAL_2/EEPROM/EEPROM.o: ../ECUAL_2/EEPROM/EEPROM.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)D:\IDEs\Microchip studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"D:\IDEs\Microchip studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32a -B "D:\IDEs\Microchip studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+ECUAL_2/MOTOR_Driver/motor.o: ../ECUAL_2/MOTOR_Driver/motor.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)D:\IDEs\Microchip studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"D:\IDEs\Microchip studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32a -B "D:\IDEs\Microchip studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

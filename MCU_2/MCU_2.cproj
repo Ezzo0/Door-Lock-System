@@ -132,6 +132,12 @@
     <Compile Include="ECUAL_2\EEPROM\EEPROM.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="ECUAL_2\MOTOR_Driver\motor.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="ECUAL_2\MOTOR_Driver\motor.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="main_MCU_2.c">
       <SubType>compile</SubType>
     </Compile>
@@ -160,6 +166,7 @@
   <ItemGroup>
     <Folder Include="APP_2" />
     <Folder Include="ECUAL_2\EEPROM" />
+    <Folder Include="ECUAL_2\MOTOR_Driver" />
     <Folder Include="MCAL_2" />
     <Folder Include="MCAL_2\DIO_Driver_2" />
     <Folder Include="MCAL_2\TWI_Driver_2" />

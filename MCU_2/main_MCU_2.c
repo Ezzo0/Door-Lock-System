@@ -5,11 +5,17 @@
  * Author : 3zz
  */ 
 
-#include "APP_2/APP_2.h"
+#include "ECUAL_2/MOTOR_Driver/motor.h"
 
 int main(void)
 {
-	app_init();
-	app_start();
+	//app_init();
+	//app_start();
+	motor_init();
+	motor_turn_cw();
+	_delay_ms(2000);
+	motor_turn_anti_cw();
+	_delay_ms(1512);
+	morot_brake();
 }
 

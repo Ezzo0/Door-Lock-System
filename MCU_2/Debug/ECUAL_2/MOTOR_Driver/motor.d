@@ -1,6 +1,6 @@
-main_MCU_2.d main_MCU_2.o: .././main_MCU_2.c \
- .././ECUAL_2/MOTOR_Driver/motor.h \
- .././ECUAL_2/MOTOR_Driver/../../MCAL_2/DIO_Driver_2/DIO_2.h \
+ECUAL_2/MOTOR_Driver/motor.d ECUAL_2/MOTOR_Driver/motor.o: \
+ ../ECUAL_2/MOTOR_Driver/motor.c ../ECUAL_2/MOTOR_Driver/motor.h \
+ ../ECUAL_2/MOTOR_Driver/../../MCAL_2/DIO_Driver_2/DIO_2.h \
  d:\embedded\ projects\door\ lock\door-lock-system\mcu_2\utilities_2\macros_2.h \
  d:\ides\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h \
  d:\ides\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\sfr_defs.h \
@@ -17,9 +17,9 @@ main_MCU_2.d main_MCU_2.o: .././main_MCU_2.c \
  d:\ides\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h \
  d:\ides\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h
 
-.././ECUAL_2/MOTOR_Driver/motor.h:
+../ECUAL_2/MOTOR_Driver/motor.h:
 
-.././ECUAL_2/MOTOR_Driver/../../MCAL_2/DIO_Driver_2/DIO_2.h:
+../ECUAL_2/MOTOR_Driver/../../MCAL_2/DIO_Driver_2/DIO_2.h:
 
 d:\embedded\ projects\door\ lock\door-lock-system\mcu_2\utilities_2\macros_2.h:
 
