@@ -8,7 +8,6 @@
 #include "APP_1.h"
 
 uint8_t password[17] = {'\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0'};
-uint8_t clr[17] = {0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,'\0'};
 uint8_t keypadInput;
 uint8_t cnt = 0;
 uint8_t option = Not_choosed;
@@ -85,9 +84,8 @@ void secondOption()
 	firstOption();
 	if(matched_password == Matched)
 	{
-		UART_transmitString(clr);
 		LCD_8_bit_clear_all();
-		LCD_8_bit_enter_pass();
+		LCD_8_bit_enter_new_pass();
 		firstOption();
 		choosed_option = Not_choosed;
 		option = Not_choosed;
@@ -110,13 +108,14 @@ void app_start()
 		UART_transmit(password_checker);
 		if(password_checker == Password_was_not_entered)
 		{
-			LCD_8_bit_enter_pass();
+			LCD_8_bit_enter_new_pass();
 			firstOption();
 			int_eeprom_w(0x00,1);
 		}
 		
 		else if(password_checker == Password_was_entered)
 		{
+			
 			if(choosed_option == Not_choosed)
 			{
 				LCD_8_bit_clear_all();
@@ -130,14 +129,16 @@ void app_start()
 				choosed_option = Choosed;
 			}
 			
+			UART_transmit(choosed_option);
 			if(option == First_option)
 			{
+				UART_transmit(option);
 				firstOption();
 				if(matched_password == Matched)
 				{
 					LCD_8_bit_clear_all();
 					LCD_8_bit_opening();
-					_delay_ms(5000);
+					_delay_ms(3000);
 					LCD_8_bit_clear_all();
 					LCD_8_bit_closing();
 					_delay_ms(2000);
@@ -156,6 +157,7 @@ void app_start()
 			
 			else if(option == Second_option)
 			{
+				UART_transmit(option);
 				secondOption();
 			}
 		}

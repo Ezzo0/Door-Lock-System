@@ -29,6 +29,7 @@ void LCD_8_bit_clear_all();
 void LCD_8_bit_welcoming();
 void LCD_8_bit_display_options();
 void LCD_8_bit_enter_pass();
+void LCD_8_bit_enter_new_pass();
 void LCD_8_bit_4_chars_needed();
 void LCD_8_bit_wrong_pass();
 void LCD_8_bit_loading();

@@ -20,7 +20,9 @@ APP_2/APP_2.d APP_2/APP_2.o: ../APP_2/APP_2.c ../APP_2/APP_2.h \
  ../APP_2/../ECUAL_2/EEPROM/EEPROM.h \
  ../APP_2/../ECUAL_2/EEPROM/../../MCAL_2/TWI_Driver_2/TWI_2.h \
  d:\1-nu\1-extra\embedded\projects\door-lock-system\mcu_2\utilities_2\macros_2.h \
- ../APP_2/../ECUAL_2/EEPROM/../../Utilities_2/Macros_2.h
+ ../APP_2/../ECUAL_2/EEPROM/../../Utilities_2/Macros_2.h \
+ ../APP_2/../ECUAL_2/MOTOR_Driver/motor.h \
+ ../APP_2/../ECUAL_2/MOTOR_Driver/../../MCAL_2/DIO_Driver_2/DIO_2.h
 
 ../APP_2/APP_2.h:
 
@@ -67,3 +69,7 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 d:\1-nu\1-extra\embedded\projects\door-lock-system\mcu_2\utilities_2\macros_2.h:
 
 ../APP_2/../ECUAL_2/EEPROM/../../Utilities_2/Macros_2.h:
+
+../APP_2/../ECUAL_2/MOTOR_Driver/motor.h:
+
+../APP_2/../ECUAL_2/MOTOR_Driver/../../MCAL_2/DIO_Driver_2/DIO_2.h:

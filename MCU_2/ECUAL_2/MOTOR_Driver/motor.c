@@ -27,9 +27,21 @@ void motor_turn_anti_cw()
 	DIO_write(port_B,PIN_7,HIGH);
 }
 
-void morot_brake()
+void motor_brake()
 {
 	DIO_write(port_B,PIN_5,HIGH);
 	DIO_write(port_B,PIN_6,HIGH);
 	DIO_write(port_B,PIN_7,HIGH);
+}
+
+void motor_response()
+{
+	_delay_ms(1000);
+	motor_turn_cw();
+	_delay_ms(1500);
+	motor_brake();
+	_delay_ms(1500);
+	motor_turn_anti_cw();
+	_delay_ms(2000);
+	motor_brake();
 }

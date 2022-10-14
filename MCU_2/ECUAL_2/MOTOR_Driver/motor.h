@@ -14,7 +14,8 @@
 void motor_init();
 void motor_turn_cw();
 void motor_turn_anti_cw();
-void morot_brake();
+void motor_brake();
+void motor_response();
 
 
 #endif /* MOTOR_H_ */

@@ -24,6 +24,7 @@
 
 #define First_option '1'
 #define Second_option '2'
+
 #define Not_choosed 0
 #define Choosed 1
 

@@ -11,6 +11,7 @@
 uint8_t welcomeStr[] = "Welcome To";
 uint8_t welcomeStr_2[] = "Door Lock System";
 uint8_t enter_pass_str[] = "Enter password";
+uint8_t enter_new_pass_str[] = "Enter new pass";
 uint8_t option_1[] = "1.Open the door";
 uint8_t option_2[] = "2.Alter Password";
 uint8_t least_pass_1[] = "At least Enter";
@@ -94,6 +95,12 @@ void LCD_8_bit_display_options()
 void LCD_8_bit_enter_pass()
 {
 	LCD_8_bit_sendString(enter_pass_str); // Displaying option words
+	LCD_8_bit_sendCommand(0xC0); // Cursor at 2nd line
+}
+
+void LCD_8_bit_enter_new_pass()
+{
+	LCD_8_bit_sendString(enter_new_pass_str); // Displaying option words
 	LCD_8_bit_sendCommand(0xC0); // Cursor at 2nd line
 }
 
