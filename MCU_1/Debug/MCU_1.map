@@ -224,7 +224,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x986
+.text           0x00000000      0x988
  *(.vectors)
  .vectors       0x00000000       0x54 D:/IDEs/Microchip studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega32a/avr5/crtatmega32a.o
                 0x00000000                __vector_default
@@ -313,102 +313,102 @@ END GROUP
                 0x000000a0       0x1a APP/APP_1.o
                 0x000000a0                reset_password_array
  .text.firstOption
-                0x000000ba       0xc2 APP/APP_1.o
+                0x000000ba       0xc4 APP/APP_1.o
                 0x000000ba                firstOption
  .text.secondOption
-                0x0000017c       0x58 APP/APP_1.o
-                0x0000017c                secondOption
+                0x0000017e       0x58 APP/APP_1.o
+                0x0000017e                secondOption
  .text.app_start
-                0x000001d4      0x10c APP/APP_1.o
-                0x000001d4                app_start
+                0x000001d6      0x10c APP/APP_1.o
+                0x000001d6                app_start
  .text.Keypad_init
-                0x000002e0       0x56 ECUAL_1/Keypad_Driver/keypad.o
-                0x000002e0                Keypad_init
+                0x000002e2       0x56 ECUAL_1/Keypad_Driver/keypad.o
+                0x000002e2                Keypad_init
  .text.Keypad_pressed
-                0x00000336       0xd8 ECUAL_1/Keypad_Driver/keypad.o
-                0x00000336                Keypad_pressed
+                0x00000338       0xd8 ECUAL_1/Keypad_Driver/keypad.o
+                0x00000338                Keypad_pressed
  .text.LCD_8_bit_sendCommand
-                0x0000040e       0x34 ECUAL_1/LCD_Driver/lcd.o
-                0x0000040e                LCD_8_bit_sendCommand
+                0x00000410       0x34 ECUAL_1/LCD_Driver/lcd.o
+                0x00000410                LCD_8_bit_sendCommand
  .text.LCD_8_bit_sendChar
-                0x00000442       0x34 ECUAL_1/LCD_Driver/lcd.o
-                0x00000442                LCD_8_bit_sendChar
+                0x00000444       0x34 ECUAL_1/LCD_Driver/lcd.o
+                0x00000444                LCD_8_bit_sendChar
  .text.LCD_8_bit_clear_all
-                0x00000476        0xe ECUAL_1/LCD_Driver/lcd.o
-                0x00000476                LCD_8_bit_clear_all
+                0x00000478        0xe ECUAL_1/LCD_Driver/lcd.o
+                0x00000478                LCD_8_bit_clear_all
  .text.LCD_8_bit_sendString
-                0x00000484       0x26 ECUAL_1/LCD_Driver/lcd.o
-                0x00000484                LCD_8_bit_sendString
+                0x00000486       0x26 ECUAL_1/LCD_Driver/lcd.o
+                0x00000486                LCD_8_bit_sendString
  .text.LCD_8_bit_welcoming
-                0x000004aa       0x18 ECUAL_1/LCD_Driver/lcd.o
-                0x000004aa                LCD_8_bit_welcoming
+                0x000004ac       0x18 ECUAL_1/LCD_Driver/lcd.o
+                0x000004ac                LCD_8_bit_welcoming
  .text.LCD_8_bit_init
-                0x000004c2       0x68 ECUAL_1/LCD_Driver/lcd.o
-                0x000004c2                LCD_8_bit_init
+                0x000004c4       0x68 ECUAL_1/LCD_Driver/lcd.o
+                0x000004c4                LCD_8_bit_init
  .text.LCD_8_bit_display_options
-                0x0000052a       0x18 ECUAL_1/LCD_Driver/lcd.o
-                0x0000052a                LCD_8_bit_display_options
+                0x0000052c       0x18 ECUAL_1/LCD_Driver/lcd.o
+                0x0000052c                LCD_8_bit_display_options
  .text.LCD_8_bit_enter_pass
-                0x00000542       0x10 ECUAL_1/LCD_Driver/lcd.o
-                0x00000542                LCD_8_bit_enter_pass
+                0x00000544       0x10 ECUAL_1/LCD_Driver/lcd.o
+                0x00000544                LCD_8_bit_enter_pass
  .text.LCD_8_bit_enter_new_pass
-                0x00000552       0x10 ECUAL_1/LCD_Driver/lcd.o
-                0x00000552                LCD_8_bit_enter_new_pass
+                0x00000554       0x10 ECUAL_1/LCD_Driver/lcd.o
+                0x00000554                LCD_8_bit_enter_new_pass
  .text.LCD_8_bit_4_chars_needed
-                0x00000562       0x18 ECUAL_1/LCD_Driver/lcd.o
-                0x00000562                LCD_8_bit_4_chars_needed
+                0x00000564       0x18 ECUAL_1/LCD_Driver/lcd.o
+                0x00000564                LCD_8_bit_4_chars_needed
  .text.LCD_8_bit_wrong_pass
-                0x0000057a        0xa ECUAL_1/LCD_Driver/lcd.o
-                0x0000057a                LCD_8_bit_wrong_pass
+                0x0000057c        0xa ECUAL_1/LCD_Driver/lcd.o
+                0x0000057c                LCD_8_bit_wrong_pass
  .text.LCD_8_bit_loading
-                0x00000584        0xa ECUAL_1/LCD_Driver/lcd.o
-                0x00000584                LCD_8_bit_loading
+                0x00000586        0xa ECUAL_1/LCD_Driver/lcd.o
+                0x00000586                LCD_8_bit_loading
  .text.LCD_8_bit_opening
-                0x0000058e        0xa ECUAL_1/LCD_Driver/lcd.o
-                0x0000058e                LCD_8_bit_opening
+                0x00000590        0xa ECUAL_1/LCD_Driver/lcd.o
+                0x00000590                LCD_8_bit_opening
  .text.LCD_8_bit_closing
-                0x00000598        0xa ECUAL_1/LCD_Driver/lcd.o
-                0x00000598                LCD_8_bit_closing
- .text.main     0x000005a2        0xe main_MCU_1.o
-                0x000005a2                main
+                0x0000059a        0xa ECUAL_1/LCD_Driver/lcd.o
+                0x0000059a                LCD_8_bit_closing
+ .text.main     0x000005a4        0xe main_MCU_1.o
+                0x000005a4                main
  .text.DIO_init
-                0x000005b0       0xf4 MCAL_1/DIO_Driver_1/DIO_1.o
-                0x000005b0                DIO_init
+                0x000005b2       0xf4 MCAL_1/DIO_Driver_1/DIO_1.o
+                0x000005b2                DIO_init
  .text.DIO_write
-                0x000006a4       0xf4 MCAL_1/DIO_Driver_1/DIO_1.o
-                0x000006a4                DIO_write
+                0x000006a6       0xf4 MCAL_1/DIO_Driver_1/DIO_1.o
+                0x000006a6                DIO_write
  .text.DIO_read
-                0x00000798       0xc8 MCAL_1/DIO_Driver_1/DIO_1.o
-                0x00000798                DIO_read
+                0x0000079a       0xc8 MCAL_1/DIO_Driver_1/DIO_1.o
+                0x0000079a                DIO_read
  .text.int_eeprom_w
-                0x00000860       0x1a MCAL_1/Internal_EEPROM_Driver/internal_eeprom.o
-                0x00000860                int_eeprom_w
+                0x00000862       0x1a MCAL_1/Internal_EEPROM_Driver/internal_eeprom.o
+                0x00000862                int_eeprom_w
  .text.int_eeprom_r
-                0x0000087a       0x14 MCAL_1/Internal_EEPROM_Driver/internal_eeprom.o
-                0x0000087a                int_eeprom_r
+                0x0000087c       0x14 MCAL_1/Internal_EEPROM_Driver/internal_eeprom.o
+                0x0000087c                int_eeprom_r
  .text.UART_set_BAUD
-                0x0000088e        0x6 MCAL_1/UART_Driver_1/UART_1.o
-                0x0000088e                UART_set_BAUD
+                0x00000890        0x6 MCAL_1/UART_Driver_1/UART_1.o
+                0x00000890                UART_set_BAUD
  .text.UART_set_frame
-                0x00000894       0x96 MCAL_1/UART_Driver_1/UART_1.o
-                0x00000894                UART_set_frame
+                0x00000896       0x96 MCAL_1/UART_Driver_1/UART_1.o
+                0x00000896                UART_set_frame
  .text.UART_init
-                0x0000092a       0x1e MCAL_1/UART_Driver_1/UART_1.o
-                0x0000092a                UART_init
+                0x0000092c       0x1e MCAL_1/UART_Driver_1/UART_1.o
+                0x0000092c                UART_init
  .text.UART_transmit
-                0x00000948        0x8 MCAL_1/UART_Driver_1/UART_1.o
-                0x00000948                UART_transmit
+                0x0000094a        0x8 MCAL_1/UART_Driver_1/UART_1.o
+                0x0000094a                UART_transmit
  .text.UART_transmitString
-                0x00000950       0x2a MCAL_1/UART_Driver_1/UART_1.o
-                0x00000950                UART_transmitString
+                0x00000952       0x2a MCAL_1/UART_Driver_1/UART_1.o
+                0x00000952                UART_transmitString
  .text.UART_receive
-                0x0000097a        0x8 MCAL_1/UART_Driver_1/UART_1.o
-                0x0000097a                UART_receive
-                0x00000982                . = ALIGN (0x2)
+                0x0000097c        0x8 MCAL_1/UART_Driver_1/UART_1.o
+                0x0000097c                UART_receive
+                0x00000984                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00000982        0x0 d:/ides/microchip studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
-                0x00000982                _exit
-                0x00000982                exit
+ .fini9         0x00000984        0x0 d:/ides/microchip studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+                0x00000984                _exit
+                0x00000984                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -427,11 +427,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00000982        0x4 d:/ides/microchip studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+ .fini0         0x00000984        0x4 d:/ides/microchip studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x00000986                _etext = .
+                0x00000988                _etext = .
 
-.data           0x00800060       0xca load address 0x00000986
+.data           0x00800060       0xca load address 0x00000988
                 0x00800060                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -508,8 +508,8 @@ END GROUP
                 0x0080013f                keypadInput
                 0x00800140                password_checker
                 0x00800141                PROVIDE (__bss_end, .)
-                0x00000986                __data_load_start = LOADADDR (.data)
-                0x00000a50                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00000988                __data_load_start = LOADADDR (.data)
+                0x00000a52                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x00800141        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
@@ -606,16 +606,16 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x1b8c
+.debug_info     0x00000000     0x1b97
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x4e6 D:/IDEs/Microchip studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega32a/avr5/crtatmega32a.o
- .debug_info    0x000004e6      0x695 APP/APP_1.o
- .debug_info    0x00000b7b      0x365 ECUAL_1/Keypad_Driver/keypad.o
- .debug_info    0x00000ee0      0x7e8 ECUAL_1/LCD_Driver/lcd.o
- .debug_info    0x000016c8       0xad main_MCU_1.o
- .debug_info    0x00001775      0x17b MCAL_1/DIO_Driver_1/DIO_1.o
- .debug_info    0x000018f0       0xd9 MCAL_1/Internal_EEPROM_Driver/internal_eeprom.o
- .debug_info    0x000019c9      0x1c3 MCAL_1/UART_Driver_1/UART_1.o
+ .debug_info    0x000004e6      0x6a0 APP/APP_1.o
+ .debug_info    0x00000b86      0x365 ECUAL_1/Keypad_Driver/keypad.o
+ .debug_info    0x00000eeb      0x7e8 ECUAL_1/LCD_Driver/lcd.o
+ .debug_info    0x000016d3       0xad main_MCU_1.o
+ .debug_info    0x00001780      0x17b MCAL_1/DIO_Driver_1/DIO_1.o
+ .debug_info    0x000018fb       0xd9 MCAL_1/Internal_EEPROM_Driver/internal_eeprom.o
+ .debug_info    0x000019d4      0x1c3 MCAL_1/UART_Driver_1/UART_1.o
 
 .debug_abbrev   0x00000000      0xb8b
  *(.debug_abbrev)

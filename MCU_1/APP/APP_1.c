@@ -71,7 +71,7 @@ void firstOption()
 			{
 				if(cnt < 16)
 				{
-					LCD_8_bit_sendChar(keypadInput);
+					LCD_8_bit_sendChar('*');
 					password[cnt] = keypadInput;
 					++cnt;
 				}
