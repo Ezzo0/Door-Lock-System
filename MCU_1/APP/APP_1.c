@@ -14,6 +14,7 @@ uint8_t option = Not_choosed;
 uint8_t choosed_option = Not_choosed;
 uint8_t password_checker;
 uint8_t matched_password = Matched;
+uint8_t wrong_password = 0;
 
 void app_init()
 {
@@ -68,10 +69,12 @@ void firstOption()
 		{
 			if(keypadInput != NOT_pressed)
 			{
-				LCD_8_bit_sendChar(keypadInput);
-				password[cnt] = keypadInput;
 				if(cnt < 16)
+				{
+					LCD_8_bit_sendChar('*');
+					password[cnt] = keypadInput;
 					++cnt;
+				}
 			}
 		}
 	}
@@ -89,9 +92,12 @@ void secondOption()
 		firstOption();
 		choosed_option = Not_choosed;
 		option = Not_choosed;
+		wrong_password = 0;
 	}
 	else
 	{
+		++wrong_password;
+		UART_transmit(wrong_password);
 		LCD_8_bit_clear_all();
 		LCD_8_bit_wrong_pass();
 		_delay_ms(2000);
@@ -144,9 +150,12 @@ void app_start()
 					_delay_ms(2000);
 					choosed_option = Not_choosed;
 					option = Not_choosed;
+					wrong_password = 0;
 				}
 				else
 				{
+					++wrong_password;
+					UART_transmit(wrong_password);
 					LCD_8_bit_clear_all();
 					LCD_8_bit_wrong_pass();
 					_delay_ms(2000);

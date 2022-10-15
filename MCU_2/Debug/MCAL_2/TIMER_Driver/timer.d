@@ -1,6 +1,7 @@
-MCAL_1/UART_Driver_1/UART_1.d MCAL_1/UART_Driver_1/UART_1.o: \
- ../MCAL_1/UART_Driver_1/UART_1.c ../MCAL_1/UART_Driver_1/UART_1.h \
- ../MCAL_1/UART_Driver_1/../../Utilities_1/Macros_1.h \
+MCAL_2/TIMER_Driver/timer.d MCAL_2/TIMER_Driver/timer.o: \
+ ../MCAL_2/TIMER_Driver/timer.c ../MCAL_2/TIMER_Driver/timer.h \
+ ../MCAL_2/TIMER_Driver/../DIO_Driver_2/DIO_2.h \
+ ../MCAL_2/TIMER_Driver/../DIO_Driver_2/../../Utilities_2/Macros_2.h \
  d:\ides\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h \
  d:\ides\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\sfr_defs.h \
  d:\ides\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\inttypes.h \
@@ -14,11 +15,15 @@ MCAL_1/UART_Driver_1/UART_1.d MCAL_1/UART_Driver_1/UART_1.o: \
  d:\ides\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h \
  d:\ides\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h \
  d:\ides\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h \
- d:\ides\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h
+ d:\ides\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
+ ../MCAL_2/TIMER_Driver/../INTURREPTS_Driver/interrupts.h \
+ ../MCAL_2/TIMER_Driver/../INTURREPTS_Driver/../../Utilities_2/Macros_2.h
 
-../MCAL_1/UART_Driver_1/UART_1.h:
+../MCAL_2/TIMER_Driver/timer.h:
 
-../MCAL_1/UART_Driver_1/../../Utilities_1/Macros_1.h:
+../MCAL_2/TIMER_Driver/../DIO_Driver_2/DIO_2.h:
+
+../MCAL_2/TIMER_Driver/../DIO_Driver_2/../../Utilities_2/Macros_2.h:
 
 d:\ides\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h:
 
@@ -47,3 +52,7 @@ d:\ides\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util
 d:\ides\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h:
 
 d:\ides\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h:
+
+../MCAL_2/TIMER_Driver/../INTURREPTS_Driver/interrupts.h:
+
+../MCAL_2/TIMER_Driver/../INTURREPTS_Driver/../../Utilities_2/Macros_2.h:

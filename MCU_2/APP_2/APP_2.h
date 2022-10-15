@@ -11,6 +11,8 @@
 
 #include "../MCAL_2/DIO_Driver_2/DIO_2.h"
 #include "../MCAL_2/UART_Driver_2/UART_2.h"
+#include "../MCAL_2/INTURREPTS_Driver/interrupts.h"
+#include "../MCAL_2/TIMER_Driver/timer.h"
 #include "../ECUAL_2/EEPROM/EEPROM.h"
 #include "../ECUAL_2/MOTOR_Driver/motor.h"
 

@@ -1,6 +1,8 @@
-MCAL_1/UART_Driver_1/UART_1.d MCAL_1/UART_Driver_1/UART_1.o: \
- ../MCAL_1/UART_Driver_1/UART_1.c ../MCAL_1/UART_Driver_1/UART_1.h \
- ../MCAL_1/UART_Driver_1/../../Utilities_1/Macros_1.h \
+MCAL_2/INTURREPTS_Driver/interrupts.d \
+ MCAL_2/INTURREPTS_Driver/interrupts.o: \
+ ../MCAL_2/INTURREPTS_Driver/interrupts.c \
+ ../MCAL_2/INTURREPTS_Driver/interrupts.h \
+ ../MCAL_2/INTURREPTS_Driver/../../Utilities_2/Macros_2.h \
  d:\ides\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h \
  d:\ides\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\sfr_defs.h \
  d:\ides\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\inttypes.h \
@@ -16,9 +18,9 @@ MCAL_1/UART_Driver_1/UART_1.d MCAL_1/UART_Driver_1/UART_1.o: \
  d:\ides\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h \
  d:\ides\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h
 
-../MCAL_1/UART_Driver_1/UART_1.h:
+../MCAL_2/INTURREPTS_Driver/interrupts.h:
 
-../MCAL_1/UART_Driver_1/../../Utilities_1/Macros_1.h:
+../MCAL_2/INTURREPTS_Driver/../../Utilities_2/Macros_2.h:
 
 d:\ides\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h:
 
