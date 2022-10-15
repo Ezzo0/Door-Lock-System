@@ -13,12 +13,24 @@ uint8_t pass_recieve_cmpr[17] = {'\0','\0','\0','\0','\0','\0','\0','\0','\0','\
 uint8_t clr[17] = {0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF, 0xFF};
 uint8_t opt = 0;
 uint8_t chs_opt =0;
+uint8_t wrong_pass;
+uint8_t flag = 1;
 
 void app_init(){
 	UART_init();
 	EEPROM_init();
 	motor_init();
-	DDRA = 0xFF;
+	DIO_init(port_D,PIN_6,OUT);
+	DIO_init(port_D,PIN_7,OUT);
+	
+	// Interrupts activation
+	enable_global_interrupts();
+	timer2_enable_overflow_interrupt();
+	// Timers mode selection
+	timer2_select_mode(normal);
+	
+	// Timers initial value
+	timer2_set_initial_value(Timer_initial_value);
 }
 
 
@@ -46,6 +58,14 @@ void app_start()
 				
 				if(pass_match)
 				{
+					if(!flag)
+					{
+						timer2_timer_stop();
+						DIO_write(port_D,PIN_7,LOW);
+						DIO_write(port_D,PIN_6,LOW);
+						flag = 1;
+					}
+					
 					if(opt == First_option)
 					{
 						motor_response();
@@ -59,6 +79,16 @@ void app_start()
 						set_new_pass();
 						UART_transmit(Matched);
 						
+					}
+				}
+				else
+				{
+					wrong_pass = UART_receive();
+					if(wrong_pass >= 3 && flag)
+					{
+						timer2_timer_start(Timer_prescalar);
+						DIO_write(port_D,PIN_7,HIGH);
+						flag = 0;
 					}
 				}
 			}

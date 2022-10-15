@@ -147,6 +147,18 @@
     <Compile Include="MCAL_2\DIO_Driver_2\DIO_2.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="MCAL_2\INTURREPTS_Driver\interrupts.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL_2\INTURREPTS_Driver\interrupts.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL_2\TIMER_Driver\timer.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL_2\TIMER_Driver\timer.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="MCAL_2\TWI_Driver_2\TWI_2.c">
       <SubType>compile</SubType>
     </Compile>
@@ -169,6 +181,8 @@
     <Folder Include="ECUAL_2\MOTOR_Driver" />
     <Folder Include="MCAL_2" />
     <Folder Include="MCAL_2\DIO_Driver_2" />
+    <Folder Include="MCAL_2\INTURREPTS_Driver" />
+    <Folder Include="MCAL_2\TIMER_Driver" />
     <Folder Include="MCAL_2\TWI_Driver_2" />
     <Folder Include="MCAL_2\UART_Driver_2" />
     <Folder Include="ECUAL_2" />
