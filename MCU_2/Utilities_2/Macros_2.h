@@ -9,9 +9,11 @@
 #ifndef MACROS_2_H_
 #define MACROS_2_H_
 
+
 #define F_CPU 1000000UL
 #include <avr/io.h>
-#include <util/delay.h>
+#include <math.h>
+
 
 // Port names to pass them to functions
 #define port_A 'A'

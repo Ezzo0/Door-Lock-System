@@ -10,7 +10,7 @@
 #define TIMER_H_
 
 #include "../DIO_Driver_2/DIO_2.h"
-#include "../INTURREPTS_Driver/interrupts.h"
+#include "../INTURREPTS_Driver_2/interrupts_2.h"
 
 // Modes Macros
 #define normal 'n'
@@ -25,6 +25,13 @@ void timer2_set_initial_value(uint8_t value);
 void timer2_timer_start(int prescalar);
 void timer2_timer_reset();
 void timer2_timer_stop();
+
+void TIMER_0_init();
+void TIMER_0_set_init_value(uint16_t val);
+void TIMER_0_start(float delay);
+void TIMER_0_stop();
+void TIMER_0_delay(float delay);
+void TIMER_reset();
 
 
 

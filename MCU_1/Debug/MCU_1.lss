@@ -19,15 +19,15 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
   7 .debug_abbrev 00000b8b  00000000  00000000  000028b3  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00001072  00000000  00000000  0000343e  2**0
+  8 .debug_line   000010d3  00000000  00000000  0000343e  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  0000031c  00000000  00000000  000044b0  2**2
+  9 .debug_frame  0000031c  00000000  00000000  00004514  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    0000077b  00000000  00000000  000047cc  2**0
+ 10 .debug_str    0000077e  00000000  00000000  00004830  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    000009dc  00000000  00000000  00004f47  2**0
+ 11 .debug_loc    000009dc  00000000  00000000  00004fae  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000170  00000000  00000000  00005923  2**0
+ 12 .debug_ranges 00000170  00000000  00000000  0000598a  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -96,9 +96,9 @@ Disassembly of section .text:
   8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
 
 00000092 <app_init>:
-uint8_t matched_password = Matched;
-uint8_t wrong_password = 0;
 
+
+// Function that initializes all driver
 void app_init()
 {
 	Keypad_init();
@@ -112,6 +112,7 @@ void app_init()
 000000a0 <reset_password_array>:
 }
 
+// Function to reset password array that is filled with keypad input (lcd is cleared after)
 void reset_password_array(uint8_t *array)
 {
   a0:	9c 01       	movw	r18, r24
@@ -124,9 +125,9 @@ void reset_password_array(uint8_t *array)
   a8:	e9 0f       	add	r30, r25
   aa:	f1 1d       	adc	r31, r1
   ac:	10 82       	st	Z, r1
-	UART_init();
 }
 
+// Function to reset password array that is filled with keypad input (lcd is cleared after)
 void reset_password_array(uint8_t *array)
 {
 	for(uint8_t i = 0; i < 17; ++i)
@@ -136,36 +137,38 @@ void reset_password_array(uint8_t *array)
 	{
 		array[i] = '\0';
 	}
-	cnt = 0;
+	cnt = 0;					// resets the variable to keep track of the input count
   b4:	10 92 2d 01 	sts	0x012D, r1	; 0x80012d <cnt>
   b8:	08 95       	ret
 
 000000ba <firstOption>:
-
 void firstOption()
 {
 	while (1)
 	{
+		// Variable that stores the return char value from Keypad_pressed() function every iteration
 		keypadInput = Keypad_pressed();
   ba:	0e 94 9c 01 	call	0x338	; 0x338 <Keypad_pressed>
   be:	80 93 3f 01 	sts	0x013F, r24	; 0x80013f <keypadInput>
 		
+		// '=' means the user wants to submit the password
 		if(keypadInput == '=')
   c2:	8d 33       	cpi	r24, 0x3D	; 61
   c4:	a1 f5       	brne	.+104    	; 0x12e <firstOption+0x74>
 		{
+			// Checking if the length condition is met
 			if(cnt >= 4)
   c6:	80 91 2d 01 	lds	r24, 0x012D	; 0x80012d <cnt>
   ca:	84 30       	cpi	r24, 0x04	; 4
   cc:	d0 f0       	brcs	.+52     	; 0x102 <firstOption+0x48>
 			{
-				UART_transmitString(password);
+				UART_transmitString(password);		// send password array to MCU_2 through UART
   ce:	8e e2       	ldi	r24, 0x2E	; 46
   d0:	91 e0       	ldi	r25, 0x01	; 1
   d2:	0e 94 a9 04 	call	0x952	; 0x952 <UART_transmitString>
 				LCD_8_bit_clear_all();
   d6:	0e 94 3c 02 	call	0x478	; 0x478 <LCD_8_bit_clear_all>
-				LCD_8_bit_loading();
+				LCD_8_bit_loading();				// displays "loading" statement 
   da:	0e 94 c3 02 	call	0x586	; 0x586 <LCD_8_bit_loading>
 	#else
 		//round up by default
@@ -187,11 +190,11 @@ void firstOption()
   f0:	8e e2       	ldi	r24, 0x2E	; 46
   f2:	91 e0       	ldi	r25, 0x01	; 1
   f4:	0e 94 50 00 	call	0xa0	; 0xa0 <reset_password_array>
-					++cnt;
 				}
 			}
 		}
 	}
+	// If there was already a password stored in the External EEPROM, receive it from the MCU_2 through UART into the matched_password flag
 	if(password_checker == Password_was_entered)
   f8:	80 91 40 01 	lds	r24, 0x0140	; 0x800140 <password_checker>
   fc:	81 30       	cpi	r24, 0x01	; 1
@@ -204,7 +207,7 @@ void firstOption()
 			{
 				LCD_8_bit_clear_all();
  102:	0e 94 3c 02 	call	0x478	; 0x478 <LCD_8_bit_clear_all>
-				LCD_8_bit_4_chars_needed();
+				LCD_8_bit_4_chars_needed();			// displays "4 characters needed" statement
  106:	0e 94 b2 02 	call	0x564	; 0x564 <LCD_8_bit_4_chars_needed>
  10a:	2f e7       	ldi	r18, 0x7F	; 127
  10c:	8a e1       	ldi	r24, 0x1A	; 26
@@ -222,11 +225,12 @@ void firstOption()
  120:	0e 94 50 00 	call	0xa0	; 0xa0 <reset_password_array>
 				LCD_8_bit_clear_all();
  124:	0e 94 3c 02 	call	0x478	; 0x478 <LCD_8_bit_clear_all>
-				LCD_8_bit_enter_pass();
+				LCD_8_bit_enter_pass();				// displays "Enter password" statement
  128:	0e 94 a2 02 	call	0x544	; 0x544 <LCD_8_bit_enter_pass>
  12c:	c6 cf       	rjmp	.-116    	; 0xba <firstOption>
 			}
 		}
+		// 'c' means the user wants to delete what was typed (before submission)
 		else if(keypadInput == 'c')
  12e:	83 36       	cpi	r24, 0x63	; 99
  130:	49 f4       	brne	.+18     	; 0x144 <firstOption+0x8a>
@@ -243,18 +247,20 @@ void firstOption()
 		}
 		else
 		{
+			// Keypad_pressed() function returns NOT_pressed by default if the user didn't press any button
 			if(keypadInput != NOT_pressed)
  144:	88 23       	and	r24, r24
  146:	09 f4       	brne	.+2      	; 0x14a <firstOption+0x90>
  148:	b8 cf       	rjmp	.-144    	; 0xba <firstOption>
 			{
+				// to make sure there is no more than 16 characters typed in the password [the length of the lcd]
 				if(cnt < 16)
  14a:	80 91 2d 01 	lds	r24, 0x012D	; 0x80012d <cnt>
  14e:	80 31       	cpi	r24, 0x10	; 16
  150:	08 f0       	brcs	.+2      	; 0x154 <firstOption+0x9a>
  152:	b3 cf       	rjmp	.-154    	; 0xba <firstOption>
 				{
-					LCD_8_bit_sendChar('*');
+					LCD_8_bit_sendChar('*');				// To add more privacy to the user while typing the password
  154:	8a e2       	ldi	r24, 0x2A	; 42
  156:	0e 94 22 02 	call	0x444	; 0x444 <LCD_8_bit_sendChar>
 					password[cnt] = keypadInput;
@@ -265,14 +271,14 @@ void firstOption()
  164:	fe 4f       	sbci	r31, 0xFE	; 254
  166:	90 91 3f 01 	lds	r25, 0x013F	; 0x80013f <keypadInput>
  16a:	90 83       	st	Z, r25
-					++cnt;
+					++cnt;									// Increment the variable to keep track of the input count
  16c:	8f 5f       	subi	r24, 0xFF	; 255
  16e:	80 93 2d 01 	sts	0x012D, r24	; 0x80012d <cnt>
  172:	a3 cf       	rjmp	.-186    	; 0xba <firstOption>
-				}
 			}
 		}
 	}
+	// If there was already a password stored in the External EEPROM, receive it from the MCU_2 through UART into the matched_password flag
 	if(password_checker == Password_was_entered)
 		matched_password = UART_receive();
  174:	0e 94 be 04 	call	0x97c	; 0x97c <UART_receive>
@@ -280,10 +286,11 @@ void firstOption()
  17c:	08 95       	ret
 
 0000017e <secondOption>:
-}
 
+// Function that lets the users make a new password
 void secondOption()
 {
+	// It is required to enter the old password before changing it to a new one
 	firstOption();
  17e:	0e 94 5d 00 	call	0xba	; 0xba <firstOption>
 	if(matched_password == Matched)
@@ -293,10 +300,14 @@ void secondOption()
 	{
 		LCD_8_bit_clear_all();
  18a:	0e 94 3c 02 	call	0x478	; 0x478 <LCD_8_bit_clear_all>
-		LCD_8_bit_enter_new_pass();
+		LCD_8_bit_enter_new_pass();					// displays "Enter new password" statement
  18e:	0e 94 aa 02 	call	0x554	; 0x554 <LCD_8_bit_enter_new_pass>
-		firstOption();
+		
+		// This time it takes the input from the user, verify it, and send it to MCU_2 and get guaranteed matched_password flag value of (matched)
+		firstOption();			
  192:	0e 94 5d 00 	call	0xba	; 0xba <firstOption>
+		
+		/* Resetting all variables to enter new iteration without errors */					
 		choosed_option = Not_choosed;
  196:	10 92 2b 01 	sts	0x012B, r1	; 0x80012b <choosed_option>
 		option = Not_choosed;
@@ -307,11 +318,11 @@ void secondOption()
 	}
 	else
 	{
-		++wrong_password;
+		++wrong_password;						// If the password was incorrect, increment wrong_password.
  1a4:	80 91 2a 01 	lds	r24, 0x012A	; 0x80012a <__data_end>
  1a8:	8f 5f       	subi	r24, 0xFF	; 255
  1aa:	80 93 2a 01 	sts	0x012A, r24	; 0x80012a <__data_end>
-		UART_transmit(wrong_password);
+		UART_transmit(wrong_password);			// Keep MCU_2 updated with the flag value
  1ae:	0e 94 a5 04 	call	0x94a	; 0x94a <UART_transmit>
 		LCD_8_bit_clear_all();
  1b2:	0e 94 3c 02 	call	0x478	; 0x478 <LCD_8_bit_clear_all>
@@ -339,13 +350,15 @@ void app_start()
 {	
 	while(1)
 	{
-		password_checker = int_eeprom_r(0x00);
+		password_checker = int_eeprom_r(0x00);					// reads flag value from internal EEPROM to check if there is already a saved password	
  1d6:	80 e0       	ldi	r24, 0x00	; 0
  1d8:	0e 94 3e 04 	call	0x87c	; 0x87c <int_eeprom_r>
  1dc:	80 93 40 01 	sts	0x0140, r24	; 0x800140 <password_checker>
-		UART_transmit(password_checker);
+		UART_transmit(password_checker);						// Keep MCU_2 updated with the flag value
  1e0:	0e 94 a5 04 	call	0x94a	; 0x94a <UART_transmit>
-		if(password_checker == Password_was_not_entered)
+		
+		
+		if(password_checker == Password_was_not_entered)		
  1e4:	80 91 40 01 	lds	r24, 0x0140	; 0x800140 <password_checker>
  1e8:	8f 3f       	cpi	r24, 0xFF	; 255
  1ea:	49 f4       	brne	.+18     	; 0x1fe <app_start+0x28>
@@ -354,7 +367,7 @@ void app_start()
  1ec:	0e 94 aa 02 	call	0x554	; 0x554 <LCD_8_bit_enter_new_pass>
 			firstOption();
  1f0:	0e 94 5d 00 	call	0xba	; 0xba <firstOption>
-			int_eeprom_w(0x00,1);
+			int_eeprom_w(0x00,1);								// Sets the flag in the internal EEPROM
  1f4:	61 e0       	ldi	r22, 0x01	; 1
  1f6:	80 e0       	ldi	r24, 0x00	; 0
  1f8:	0e 94 31 04 	call	0x862	; 0x862 <int_eeprom_w>
@@ -373,21 +386,23 @@ void app_start()
 			{
 				LCD_8_bit_clear_all();
  20a:	0e 94 3c 02 	call	0x478	; 0x478 <LCD_8_bit_clear_all>
-				LCD_8_bit_display_options();
+				LCD_8_bit_display_options();					// displays options 1&2 statements (1- Open the door, 2- Alter password)
  20e:	0e 94 96 02 	call	0x52c	; 0x52c <LCD_8_bit_display_options>
 				option = Keypad_pressed();
  212:	0e 94 9c 01 	call	0x338	; 0x338 <Keypad_pressed>
  216:	80 93 2c 01 	sts	0x012C, r24	; 0x80012c <option>
+				
+				// To make sure there is no response for any other buttons pressed
 				while(option != First_option && option != Second_option)
  21a:	04 c0       	rjmp	.+8      	; 0x224 <app_start+0x4e>
 					option = Keypad_pressed();
  21c:	0e 94 9c 01 	call	0x338	; 0x338 <Keypad_pressed>
  220:	80 93 2c 01 	sts	0x012C, r24	; 0x80012c <option>
-			if(choosed_option == Not_choosed)
-			{
 				LCD_8_bit_clear_all();
-				LCD_8_bit_display_options();
+				LCD_8_bit_display_options();					// displays options 1&2 statements (1- Open the door, 2- Alter password)
 				option = Keypad_pressed();
+				
+				// To make sure there is no response for any other buttons pressed
 				while(option != First_option && option != Second_option)
  224:	80 91 2c 01 	lds	r24, 0x012C	; 0x80012c <option>
  228:	81 53       	subi	r24, 0x31	; 49
@@ -404,17 +419,19 @@ void app_start()
  238:	80 93 2b 01 	sts	0x012B, r24	; 0x80012b <choosed_option>
 			}
 			
-			UART_transmit(choosed_option);
+			UART_transmit(choosed_option);						// Keep MCU_2 updated with the variable value
  23c:	80 91 2b 01 	lds	r24, 0x012B	; 0x80012b <choosed_option>
  240:	0e 94 a5 04 	call	0x94a	; 0x94a <UART_transmit>
+			
 			if(option == First_option)
  244:	80 91 2c 01 	lds	r24, 0x012C	; 0x80012c <option>
  248:	81 33       	cpi	r24, 0x31	; 49
  24a:	09 f0       	breq	.+2      	; 0x24e <app_start+0x78>
  24c:	42 c0       	rjmp	.+132    	; 0x2d2 <app_start+0xfc>
 			{
-				UART_transmit(option);
+				UART_transmit(option);							// Keep MCU_2 updated with the variable value
  24e:	0e 94 a5 04 	call	0x94a	; 0x94a <UART_transmit>
+				
 				firstOption();
  252:	0e 94 5d 00 	call	0xba	; 0xba <firstOption>
 				if(matched_password == Matched)
@@ -424,7 +441,7 @@ void app_start()
 				{
 					LCD_8_bit_clear_all();
  25e:	0e 94 3c 02 	call	0x478	; 0x478 <LCD_8_bit_clear_all>
-					LCD_8_bit_opening();
+					LCD_8_bit_opening();						// displays "Opening" statement (while motors are actually opening the door)
  262:	0e 94 c8 02 	call	0x590	; 0x590 <LCD_8_bit_opening>
  266:	2f eb       	ldi	r18, 0xBF	; 191
  268:	87 e2       	ldi	r24, 0x27	; 39
@@ -438,7 +455,7 @@ void app_start()
 					_delay_ms(3000);
 					LCD_8_bit_clear_all();
  278:	0e 94 3c 02 	call	0x478	; 0x478 <LCD_8_bit_clear_all>
-					LCD_8_bit_closing();
+					LCD_8_bit_closing();						// displays "Closing" statement (while motors are actually closing the door)
  27c:	0e 94 cd 02 	call	0x59a	; 0x59a <LCD_8_bit_closing>
  280:	2f e7       	ldi	r18, 0x7F	; 127
  282:	8a e1       	ldi	r24, 0x1A	; 26
@@ -450,6 +467,8 @@ void app_start()
  28e:	00 c0       	rjmp	.+0      	; 0x290 <app_start+0xba>
  290:	00 00       	nop
 					_delay_ms(2000);
+					
+					/* Resetting all variables to enter new iteration without errors */
 					choosed_option = Not_choosed;
  292:	10 92 2b 01 	sts	0x012B, r1	; 0x80012b <choosed_option>
 					option = Not_choosed;
@@ -493,7 +512,7 @@ void app_start()
  2d4:	09 f0       	breq	.+2      	; 0x2d8 <app_start+0x102>
  2d6:	7f cf       	rjmp	.-258    	; 0x1d6 <app_start>
 			{
-				UART_transmit(option);
+				UART_transmit(option);							// Keep MCU_2 updated with the variable value
  2d8:	0e 94 a5 04 	call	0x94a	; 0x94a <UART_transmit>
 				secondOption();
  2dc:	0e 94 bf 00 	call	0x17e	; 0x17e <secondOption>
@@ -570,9 +589,9 @@ uint8_t Keypad_pressed()
  348:	1f 92       	push	r1
  34a:	cd b7       	in	r28, 0x3d	; 61
  34c:	de b7       	in	r29, 0x3e	; 62
-	uint8_t key = NOT_pressed; // variable for the pressed key
-	uint8_t flag = 0; // Flag to indicate that a key was pressed or not
-	uint8_t value; // variable for storing the value of the pin
+	uint8_t key = NOT_pressed;							// variable for the pressed key
+	uint8_t flag = 0;									// Flag to indicate that a key was pressed or not
+	uint8_t value;										// variable for storing the value of the pin
 	for(int rows_cnt = 0; rows_cnt < 4; ++rows_cnt)
  34e:	e1 2c       	mov	r14, r1
  350:	f1 2c       	mov	r15, r1
@@ -580,22 +599,22 @@ uint8_t Keypad_pressed()
 
 uint8_t Keypad_pressed()
 {
-	uint8_t key = NOT_pressed; // variable for the pressed key
-	uint8_t flag = 0; // Flag to indicate that a key was pressed or not
+	uint8_t key = NOT_pressed;							// variable for the pressed key
+	uint8_t flag = 0;									// Flag to indicate that a key was pressed or not
  352:	d1 2c       	mov	r13, r1
 	PORTA = 0xFF;
 }
 
 uint8_t Keypad_pressed()
 {
-	uint8_t key = NOT_pressed; // variable for the pressed key
+	uint8_t key = NOT_pressed;							// variable for the pressed key
  354:	c1 2c       	mov	r12, r1
-	uint8_t flag = 0; // Flag to indicate that a key was pressed or not
-	uint8_t value; // variable for storing the value of the pin
+	uint8_t flag = 0;									// Flag to indicate that a key was pressed or not
+	uint8_t value;										// variable for storing the value of the pin
 	for(int rows_cnt = 0; rows_cnt < 4; ++rows_cnt)
  356:	4c c0       	rjmp	.+152    	; 0x3f0 <Keypad_pressed+0xb8>
 	{
-		DIO_write(port_A,rows[rows_cnt],LOW); // give each row pin a low value
+		DIO_write(port_A,rows[rows_cnt],LOW);			// give each row pin a low value
  358:	40 e0       	ldi	r20, 0x00	; 0
  35a:	f7 01       	movw	r30, r14
  35c:	eb 58       	subi	r30, 0x8B	; 139
@@ -630,7 +649,7 @@ uint8_t Keypad_pressed()
  392:	00 00       	nop
  394:	0a c0       	rjmp	.+20     	; 0x3aa <Keypad_pressed+0x72>
 			{
-				_delay_ms(20); // for solving the bouncing problem
+				_delay_ms(20);							// for solving the bouncing problem
 				
 				// Busy wait for long press
 				while(value == LOW)
@@ -646,7 +665,7 @@ uint8_t Keypad_pressed()
  3a6:	0e 94 cd 03 	call	0x79a	; 0x79a <DIO_read>
 			if(value == LOW)
 			{
-				_delay_ms(20); // for solving the bouncing problem
+				_delay_ms(20);							// for solving the bouncing problem
 				
 				// Busy wait for long press
 				while(value == LOW)
@@ -655,7 +674,7 @@ uint8_t Keypad_pressed()
  3ae:	99 f3       	breq	.-26     	; 0x396 <Keypad_pressed+0x5e>
 					DIO_read(port_A,columns[columns_cnt],&value);
 				
-				key = keypad[rows_cnt][columns_cnt]; // get the pressed key
+				key = keypad[rows_cnt][columns_cnt];	// get the pressed key
  3b0:	c7 01       	movw	r24, r14
  3b2:	88 0f       	add	r24, r24
  3b4:	99 1f       	adc	r25, r25
@@ -667,28 +686,28 @@ uint8_t Keypad_pressed()
  3c0:	e0 0f       	add	r30, r16
  3c2:	f1 1f       	adc	r31, r17
  3c4:	c0 80       	ld	r12, Z
-				flag = 1; // a key was pressed
+				flag = 1;								// a key was pressed
  3c6:	dd 24       	eor	r13, r13
  3c8:	d3 94       	inc	r13
 				break;
  3ca:	05 c0       	rjmp	.+10     	; 0x3d6 <Keypad_pressed+0x9e>
-	uint8_t flag = 0; // Flag to indicate that a key was pressed or not
-	uint8_t value; // variable for storing the value of the pin
+	uint8_t flag = 0;									// Flag to indicate that a key was pressed or not
+	uint8_t value;										// variable for storing the value of the pin
 	for(int rows_cnt = 0; rows_cnt < 4; ++rows_cnt)
 	{
-		DIO_write(port_A,rows[rows_cnt],LOW); // give each row pin a low value
+		DIO_write(port_A,rows[rows_cnt],LOW);			// give each row pin a low value
 		for (int columns_cnt = 0; columns_cnt < 4; ++columns_cnt)
  3cc:	0f 5f       	subi	r16, 0xFF	; 255
  3ce:	1f 4f       	sbci	r17, 0xFF	; 255
  3d0:	04 30       	cpi	r16, 0x04	; 4
  3d2:	11 05       	cpc	r17, r1
  3d4:	64 f2       	brlt	.-104    	; 0x36e <Keypad_pressed+0x36>
-				key = keypad[rows_cnt][columns_cnt]; // get the pressed key
-				flag = 1; // a key was pressed
+				key = keypad[rows_cnt][columns_cnt];	// get the pressed key
+				flag = 1;								// a key was pressed
 				break;
 			}
 		}
-		DIO_write(port_A,rows[rows_cnt],HIGH); // return the pin to high value again
+		DIO_write(port_A,rows[rows_cnt],HIGH);			// return the pin to high value again
  3d6:	41 e0       	ldi	r20, 0x01	; 1
  3d8:	f7 01       	movw	r30, r14
  3da:	eb 58       	subi	r30, 0x8B	; 139
@@ -701,9 +720,9 @@ uint8_t Keypad_pressed()
  3e8:	08 c0       	rjmp	.+16     	; 0x3fa <Keypad_pressed+0xc2>
 uint8_t Keypad_pressed()
 {
-	uint8_t key = NOT_pressed; // variable for the pressed key
-	uint8_t flag = 0; // Flag to indicate that a key was pressed or not
-	uint8_t value; // variable for storing the value of the pin
+	uint8_t key = NOT_pressed;							// variable for the pressed key
+	uint8_t flag = 0;									// Flag to indicate that a key was pressed or not
+	uint8_t value;										// variable for storing the value of the pin
 	for(int rows_cnt = 0; rows_cnt < 4; ++rows_cnt)
  3ea:	9f ef       	ldi	r25, 0xFF	; 255
  3ec:	e9 1a       	sub	r14, r25

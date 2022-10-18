@@ -14,6 +14,7 @@ void TWI_init()
 }
 
 
+// sending the start condition and the device write address
 void TWI_start(uint8_t dev_addr)
 {
 	set_pin(TWCR,TWINT); // Clear interrupt flag in control register

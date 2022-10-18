@@ -14,6 +14,8 @@
 #include "../ECUAL_1/LCD_Driver/lcd.h"
 #include "../MCAL_1/Internal_EEPROM_Driver/internal_eeprom.h"
 
+
+
 #define Zero_char_pressed 0
 #define One_char_pressed 1
 #define Two_char_pressed 2
